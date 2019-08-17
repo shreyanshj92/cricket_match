@@ -1,0 +1,129 @@
+<div class="jumbotron">
+  <h1>
+    <div style="text-align:center">
+      Team formation
+    </div>
+  </h1>
+  <hr />
+  <div class="input-group mb-3" *ngIf="count < 2">
+    <input
+      type="text"
+      class="form-control"
+      [formControl]="teamName"
+      placeholder="Enter yeam name"
+      required
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-success"
+        type="submit"
+        (click)="addTeamName(teamName.value)"
+      >
+        Add team name
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="input-group mt-3 mb-3"
+    [formGroup]="addPlayerForm"
+    *ngIf="count >= 2 && (playersTeamA.length < 6 || playersTeamB.length < 6)"
+  >
+    <div class="input-group-prepend">
+      <select
+        class="custom-select"
+        id="team"
+        formControlName="selectedTeam"
+        (change)="updateTeamName($event)"
+      >
+        <option selected>Select team</option>
+        <option value="teamA" *ngIf="playersTeamA.length < 6">{{
+          teamAName
+        }}</option>
+        <option value="teamB" *ngIf="playersTeamB.length < 6">{{
+          teamBName
+        }}</option>
+      </select>
+    </div>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="firstName"
+      placeholder="First Name"
+      required
+    />
+    <input
+      type="text"
+      class="form-control"
+      formControlName="lastName"
+      placeholder="Last Name"
+      required
+    />
+    <select class="custom-select" id="team" formControlName="role">
+      <option selected>Role</option>
+      <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+    </select>
+    <div class="input-group-append">
+      <button
+        class="btn btn-success"
+        type="button"
+        [disabled]="!addPlayerForm.valid"
+        (click)="addPlayer()"
+      >
+        Add player
+      </button>
+      <button class="btn btn-danger" type="button" (click)="cancelPlayer()">
+        Cancel
+      </button>
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="col text-center">
+          <button class="btn btn-primary" *ngIf="teamAName" disabled>
+            Team: {{ teamAName }}
+          </button>
+        </div>
+        <hr />
+        <table class="table table-bordered" *ngIf="playersTeamA.length > 0">
+          <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Role</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let player of playersTeamA">
+              <td>{{ player.id }}</td>
+              <td>{{ player.firstName }} {{ player.lastName }}</td>
+              <td>{{ player.role }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <div class="col text-center">
+          <button class="btn btn-primary" *ngIf="teamBName" disabled>
+            Team: {{ teamBName }}
+          </button>
+        </div>
+        <hr />
+        <table class="table table-bordered" *ngIf="playersTeamB.length > 0">
+          <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Role</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let player of playersTeamB">
+              <td>{{ player.id }}</td>
+              <td>{{ player.firstName }} {{ player.lastName }}</td>
+              <td>{{ player.role }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
