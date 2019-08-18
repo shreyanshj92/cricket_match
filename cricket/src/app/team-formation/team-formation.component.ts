@@ -5,6 +5,7 @@ import {
   Validators,
   FormBuilder
 } from "@angular/forms";
+import { ScoreCardService } from "../services/score-card.service";
 
 @Component({
   selector: "app-team-formation",
@@ -33,7 +34,10 @@ export class TeamFormationComponent implements OnInit {
   count = 0;
   teamAPlayerCount = 1;
   teamBPlayerCount = 1;
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private scoreCardService: ScoreCardService
+  ) {}
 
   ngOnInit(): void {
     this.addPlayerForm = this.fb.group({
@@ -103,6 +107,7 @@ export class TeamFormationComponent implements OnInit {
     this.addPlayerForm.controls["firstName"].setValue("");
     this.addPlayerForm.controls["lastName"].setValue("");
     this.addPlayerForm.controls["role"].setValue("");
+    this.teamName.setValue("");
   }
 
   playerCountChecking(playerList: any): any {
@@ -158,5 +163,19 @@ export class TeamFormationComponent implements OnInit {
     return arr.filter(function(ele) {
       return ele != value;
     });
+  }
+
+  addTeamDetails() {
+    const teamDetails = {
+      teamA: {
+        name: this.teamAName,
+        playerList: this.playersTeamA
+      },
+      teamB: {
+        name: this.teamBName,
+        playerList: this.playersTeamA
+      }
+    };
+    this.scoreCardService.setTeamDetail(teamDetails);
   }
 }
