@@ -1,0 +1,14 @@
+<div class="jumbotron-fluid">
+  <div style="text-align:center">
+    <h1 class="font-effect-shadow-multiple">Rules</h1>
+  </div>
+  <hr />
+  <ul
+    style="margin: 50px; font-size: 24px;font-family:Arial, Helvetica, sans-serif"
+  >
+    <div *ngFor="let rule of rules">
+      <em class="fas fa-hand-point-right" style="font-size:24px"></em>
+      <span style="margin-left: 15px">{{ rule.rule }}</span>
+    </div>
+  </ul>
+</div>

@@ -1,0 +1,47 @@
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="fixed-bottom">
+  <div class="scorecard">
+    <img
+      src="../../assets/images/team-a-logo.jpg"
+      alt="team-logo"
+      height="40"
+      width="40"
+    />
+
+    <h3 style="display: inline;">
+      <span class="badge badge-secondary"
+        >Team- A :
+        <span
+          >{{ this.scoreCard.totalRun }}/{{ this.scoreCard.totalWicket }}</span
+        >
+      </span>
+    </h3>
+    <span>over: {{ calOverCount() }}</span>
+    <span class="vl"></span>
+    <span class="badge badge-danger" *ngIf="freeHitballFlag">Free hit</span>
+    <span style="margin-left: 20px; color: blue">
+      <img
+        src="../../assets/images/bat-logo.png"
+        alt="bat-logo"
+        height="30"
+        width="20"
+      />{{ displayBatsman }} : {{ displayBatsman }}
+      <span>({{ playerBall }})</span>
+    </span>
+    <span style="margin-left: 20px; color: blue">
+      <img
+        src="../../assets/images/ball.jpg"
+        alt="bat-logo"
+        height="30"
+        width="30"
+      />{{ displayBowler }} : {{ displayBowler }} <span>({{ wicket }})</span>
+    </span>
+    <span class="vl"></span>
+    <span style="margin-left: 450px; margin-top: 7px"
+      >Run rate: {{ calRunRate() }}</span
+    >
+  </div>
+</div>

@@ -1,0 +1,119 @@
+<div style="text-align:center; margin-top: 50px" *ngIf="startImageHide">
+  <img
+    width="600"
+    alt="Cricket Logo"
+    src="../assets/images/main-image.PNG"
+    (click)="nextQuestion()"
+  />
+</div>
+<div class="container" *ngIf="ranQuesDispaly">
+  <div class="row">
+    <div class="col-md-6">
+      <div *ngIf="!displayAnswer">
+        <img
+          src="../../assets/images/bowler-bowling.jpg"
+          alt="bowler"
+          height="400"
+          width="500"
+          (click)="showAnswer()"
+        />
+      </div>
+      <div
+        class="answer-display-container"
+        *ngIf="displayAnswer && ranQuesDispaly.answer"
+      >
+        <button class="btn btn-success" *ngIf="ranQuesDispaly.answer">
+          <span style="font-size: 30px; margin-right:10px">{{
+            ranQuesDispaly.answer
+          }}</span>
+          <h2>
+            <span class="badge badge-light">
+              Run: {{ ranQuesDispaly.offeredRun }}</span
+            >
+          </h2>
+        </button>
+      </div>
+      <div
+        class="out-display-container"
+        *ngIf="
+          displayAnswer && ranQuesDispaly.question.toLowerCase() === 'bowled'
+        "
+      >
+        <button
+          class="btn btn-danger"
+          *ngIf="ranQuesDispaly.question.toLowerCase() === 'bowled'"
+        >
+          <span style="font-size: 30px; margin-right:10px">
+            Out
+          </span>
+        </button>
+      </div>
+      <div
+        class="wideBall-display-container"
+        *ngIf="
+          displayAnswer && ranQuesDispaly.question.toLowerCase() === 'dot ball'
+        "
+      >
+        <button
+          class="btn btn-primary"
+          *ngIf="ranQuesDispaly.question.toLowerCase() === 'dot ball'"
+        >
+          <h2>
+            <span class="badge badge-light">
+              Run: {{ ranQuesDispaly.offeredRun }}</span
+            >
+          </h2>
+        </button>
+      </div>
+      <div class="wideBall-display-container" *ngIf="displayAnswer">
+        <button
+          class="btn btn-primary"
+          *ngIf="
+            ranQuesDispaly.question.toLowerCase() === 'no ball' ||
+            ranQuesDispaly.question.toLowerCase() === 'wide ball'
+          "
+        >
+          <h2>
+            <span class="badge badge-light">
+              Run: {{ ranQuesDispaly.offeredRun }}</span
+            >
+          </h2>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="question-display-container" *ngIf="!displayAnswer">
+        <button class="btn btn-primary">
+          <span style="font-size: 24px;">
+            {{ ranQuesDispaly.question }}
+          </span>
+        </button>
+      </div>
+      <div *ngIf="displayAnswer">
+        <img
+          src="../../assets/images/batting.png"
+          alt="batsman"
+          height="400"
+          width="500"
+          (click)="nextQuestion(ranQuesDispaly)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!ranQuesDispaly">
+  <button type="button" class="btn btn-primary" (click)="nextQuestion()">
+    <span *ngIf="error">{{ error }}</span>
+    <span *ngIf="!error">Next</span>
+  </button>
+</div>
+
+<button
+  *ngIf="ranQuesDispaly"
+  type="button"
+  class="btn btn-danger"
+  style="float: right;margin-right: 10px"
+  (click)="catchOut()"
+>
+  Catch-out
+</button>
