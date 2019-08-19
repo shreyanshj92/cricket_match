@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { resp } from "./questions";
+import { HttpClient } from "@angular/common/http";
+import { QuestionModel } from "./models/question.model";
 
 @Injectable({
   providedIn: "root"
@@ -14,7 +16,29 @@ export class ScoreCardService {
   playerScore: any;
   bowlerScore: any;
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  fetchQuestions() {
+    return this.http.get<QuestionModel[]>("http://localhost:3000/questions");
+  }
+
+  deleteQuestion(id: number) {
+    return this.http.delete(`http://localhost:3000/questions/${id}`);
+  }
+
+  addQuestion(payload: QuestionModel) {
+    return this.http.post<QuestionModel>(
+      "http://localhost:3000/questions",
+      payload
+    );
+  }
+
+  updateQuestion(payload: QuestionModel, id: number) {
+    return this.http.put<QuestionModel>(
+      `http://localhost:3000/questions/${id}`,
+      payload
+    );
+  }
 
   getQuestions(): any {
     return resp;
@@ -70,9 +94,12 @@ export class ScoreCardService {
     return this.teamData;
   }
   addPlayerScore() {
-    const getBowlers = this.teamData.teamA.playerList.filter(
-      player => player.role.toLowerCase() === "bowler"
-    );
+    let getBowlers;
+    // if (this.teamData) {
+    //   getBowlers = this.teamData.teamA.playerList.filter(
+    //     player => player.role.toLowerCase() === "bowler"
+    //   );
+    // }
 
     if (Math.floor(this.scoreCardObj.totalBall / 6) < 6) {
       if (Math.floor(this.scoreCardObj.totalBall / 6) % 2 === 0) {

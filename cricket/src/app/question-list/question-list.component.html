@@ -1,0 +1,52 @@
+<div class="container">
+  <h2 class="col text-center mt-3 mb-3 font-effect-shadow-multiple">
+    Questions list
+  </h2>
+  <div *ngIf="questions">
+    <table class="table table-bordered">
+      <thead>
+        <th>#</th>
+        <th>Question</th>
+        <th>Answer</th>
+        <th>Offered run</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of questions | async">
+          <td>{{ question.id }}</td>
+          <td>{{ question.question }}</td>
+          <td>{{ question.answer }}</td>
+          <td>{{ question.offeredRun }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info"
+              routerLink="/question-add-form"
+              (click)="editQuestion(question)"
+            >
+              <em class="material-icons">
+                edit
+              </em>
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="deleteQuestion(question.id)"
+            >
+              <em class="material-icons">
+                delete
+              </em>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col text-center">
+    <button class="btn btn-success" routerLink="/question-add-form">
+      Add New Question
+    </button>
+  </div>
+</div>

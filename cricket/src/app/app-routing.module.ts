@@ -6,6 +6,8 @@ import { TeamFormationComponent } from "./team-formation/team-formation.componen
 import { ScoreboardComponent } from "./scoreboard/scoreboard.component";
 import { RulesComponent } from "./rules/rules.component";
 import { QuestionsComponent } from "./questions/questions.component";
+import { QuestionListComponent } from "./question-list/question-list.component";
+import { UpdateQuestionsComponent } from "./update-questions/update-questions.component";
 
 const routes: Routes = [
   {
@@ -20,7 +22,9 @@ const routes: Routes = [
         component: ScoreboardComponent,
         children: [{ path: "", component: QuestionsComponent }]
       },
-      { path: "", redirectTo: "home", pathMatch: "full" }
+      { path: "question-list", component: QuestionListComponent },
+      { path: "question-add-form", component: UpdateQuestionsComponent },
+      { path: "**", redirectTo: "home", pathMatch: "full" }
     ]
   }
 ];

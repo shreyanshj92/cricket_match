@@ -9,7 +9,7 @@ export class RulesComponent implements OnInit {
   rules = [
     {
       id: 1,
-      rule: "Maximux 6 players should participet."
+      rule: "Maximum 6 players should participet."
     },
     {
       id: 2,
