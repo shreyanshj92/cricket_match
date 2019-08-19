@@ -2,37 +2,37 @@ export const resp = {
   questions: [
     {
       id: 1,
-      question: "Whats your name?",
-      answer: "Shreyansh",
+      question: "आप का नाम क्या है?",
+      answer: "श्रेयांश जैन",
       offeredRun: 4
     },
     {
       id: 2,
-      question: "Whats your hobbies?",
+      question: "आप क्या पसंद करते है?",
       answer: "Cricket, chess, movie",
       offeredRun: 2
     },
     {
       id: 3,
-      question: "Whats your company name?",
+      question: "आपकी कंपनी का नाम क्या है?",
       answer: "Mindtree",
       offeredRun: 1
     },
     {
       id: 4,
-      question: "Whats your route to office",
+      question: "ऑफिस जाने के लिए अपना रास्ता बताएं",
       answer: "phase 1",
       offeredRun: 6
     },
     {
       id: 5,
-      question: "Whats your age?",
+      question: "तुम्हारी उम्र क्या है",
       answer: "27",
       offeredRun: 1
     },
     {
       id: 6,
-      question: "Whats your job title?",
+      question: "अपने पदनाम",
       answer: "Module lead",
       offeredRun: 3
     },

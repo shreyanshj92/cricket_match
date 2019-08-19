@@ -48,6 +48,23 @@
           </span>
         </button>
       </div>
+      <div
+        class="wideBall-display-container"
+        *ngIf="
+          displayAnswer && ranQuesDispaly.question.toLowerCase() === 'dot ball'
+        "
+      >
+        <button
+          class="btn btn-primary"
+          *ngIf="ranQuesDispaly.question.toLowerCase() === 'dot ball'"
+        >
+          <h2>
+            <span class="badge badge-light">
+              Run: {{ ranQuesDispaly.offeredRun }}</span
+            >
+          </h2>
+        </button>
+      </div>
       <div class="wideBall-display-container" *ngIf="displayAnswer">
         <button
           class="btn btn-primary"
@@ -92,6 +109,7 @@
 </div>
 
 <button
+  *ngIf="ranQuesDispaly"
   type="button"
   class="btn btn-danger"
   style="float: right;margin-right: 10px"

@@ -11,6 +11,8 @@ export class ScoreCardService {
     totalWicket: 0
   };
   teamData = [];
+  playerScore: any;
+  bowlerScore: any;
 
   constructor() {}
 
@@ -39,6 +41,7 @@ export class ScoreCardService {
       }
     }
   }
+
   calRunRate(): string {
     if (this.scoreCardObj.totalRun && this.scoreCardObj.totalBall) {
       return (
@@ -65,5 +68,18 @@ export class ScoreCardService {
   }
   getTeamDetail(): any {
     return this.teamData;
+  }
+  addPlayerScore() {
+    const getBowlers = this.teamData.teamA.playerList.filter(
+      player => player.role.toLowerCase() === "bowler"
+    );
+
+    if (Math.floor(this.scoreCardObj.totalBall / 6) < 6) {
+      if (Math.floor(this.scoreCardObj.totalBall / 6) % 2 === 0) {
+        return getBowlers[0];
+      } else {
+        return getBowlers[1];
+      }
+    }
   }
 }

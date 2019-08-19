@@ -35,6 +35,8 @@ export class QuestionsComponent implements OnInit {
         this.error = "Click here for next question";
       }
       this.questions.splice(j, 1);
+    } else {
+      this.ranQuesDispaly = undefined;
     }
 
     this.scoreCardService.updateScore(questionObj);
