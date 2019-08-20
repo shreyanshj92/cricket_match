@@ -1,22 +1,366 @@
 {
-  "employees": [
+  "questions": [
     {
       "id": 1,
-      "first_name": "Sebastian",
-      "last_name": "Eschweiler",
-      "email": "sebastian@codingthesmartway.com"
+      "question": "आप का नाम क्या है?",
+      "answer": "श्रेयांश जैन",
+      "offeredRun": 4
     },
     {
       "id": 2,
-      "first_name": "Steve",
-      "last_name": "Palmer",
-      "email": "steve@codingthesmartway.com"
+      "question": "आप क्या पसंद करते है?",
+      "answer": "Cricket, chess, movie",
+      "offeredRun": 2
     },
     {
       "id": 3,
-      "first_name": "Ann",
-      "last_name": "Smith",
-      "email": "ann@codingthesmartway.com"
+      "question": "आपकी कंपनी का नाम क्या है?",
+      "answer": "Mindtree",
+      "offeredRun": 1
+    },
+    {
+      "id": 4,
+      "question": "ऑफिस जाने के लिए अपना रास्ता बताएं",
+      "answer": "phase 1",
+      "offeredRun": 6
+    },
+    {
+      "id": 5,
+      "question": "तुम्हारी उम्र क्या है",
+      "answer": "27",
+      "offeredRun": 1
+    },
+    {
+      "id": 6,
+      "question": "अपने पदनाम",
+      "answer": "Module lead",
+      "offeredRun": 3
+    },
+    {
+      "id": 7,
+      "question": "Whats your age?",
+      "answer": "27",
+      "offeredRun": 1
+    },
+    {
+      "id": 8,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 9,
+      "question": "क्रोध",
+      "answer": "Bowled",
+      "offeredRun": 0
+    },
+    {
+      "id": 10,
+      "question": "सम्यक ज्ञान",
+      "answer": "Wide ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 11,
+      "question": "सम्यक चारित्र",
+      "answer": "No ball",
+      "offeredRun": 1
+    }
+  ],
+  "cricket_question": [
+    {
+      "id": 1,
+      "question": "भगवान महावीर कहाँ से मोक्ष गये?",
+      "answer": "पावापुर",
+      "offeredRun": 1
+    },
+    {
+      "id": 2,
+      "question": "पाप का बाप कौन है?",
+      "answer": "लोभ",
+      "offeredRun": 1
+    },
+    {
+      "id": 3,
+      "question": "इस युग के धर्म प्रवर्तक कौन है?",
+      "answer": "भगवान आदिनाथ",
+      "offeredRun": 1
+    },
+    {
+      "id": 4,
+      "question": "रावण का वध किसने किया?",
+      "answer": "लक्ष्मण",
+      "offeredRun": 1
+    },
+    {
+      "id": 5,
+      "question": "सोलहवे तीर्थंकर भगवान का नाम क्या है?",
+      "answer": "शांतिनाथ",
+      "offeredRun": 1
+    },
+    {
+      "id": 6,
+      "question": "तत्वार्थ सूत्र के रचियता कौन है?",
+      "answer": "उमास्वामी",
+      "offeredRun": 1
+    },
+    {
+      "id": 7,
+      "question": "भगवान कितने है?",
+      "answer": "अनंतानंत",
+      "offeredRun": 1
+    },
+    {
+      "id": 9,
+      "question": "क्रोध",
+      "answer": "Bowled",
+      "offeredRun": 0
+    },
+    {
+      "id": 10,
+      "question": "सम्यक चारित्र",
+      "answer": "No ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 11,
+      "question": "सम्यक ज्ञान",
+      "answer": "Wide ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 12,
+      "question": "णमोकार मंत्र किसने बनाया?",
+      "answer": "अनादिनिधन मंत्र",
+      "offeredRun": 1
+    },
+    {
+      "id": 13,
+      "question": "भक्तामर के रचियता कौन हैं?",
+      "answer": "आ. कुंद कुंद स्वामी",
+      "offeredRun": 1
+    },
+    {
+      "id": 14,
+      "question": "नेमिनाथ भगवान का चिन्ह क्या है?",
+      "answer": "शंख",
+      "offeredRun": 1
+    },
+    {
+      "id": 15,
+      "question": "जिनेन्द्र देव की वाणी को क्या कहते है?",
+      "answer": "जिनवाणी",
+      "offeredRun": 1
+    },
+    {
+      "id": 16,
+      "question": "आठवाँ द्वीप कौनसा है?",
+      "answer": "नंदीश्वर",
+      "offeredRun": 1
+    },
+    {
+      "id": 17,
+      "question": "भगवान पार्श्वनाथ के माता-पिता का नाम क्या है?",
+      "answer": "वामा- अश्वसेन",
+      "offeredRun": 1
+    },
+    {
+      "id": 18,
+      "question": "छहढाला के रचियता कौन है?",
+      "answer": "पंडित दौलतराम",
+      "offeredRun": 1
+    },
+    {
+      "id": 19,
+      "question": "अभिनन्दन भगवान का चिन्ह क्या है?",
+      "answer": "बन्दर",
+      "offeredRun": 1
+    },
+    {
+      "id": 20,
+      "question": "सर्वप्रथम णमोकार मंत्र किसने लिपिबद्ध किआ था?",
+      "answer": "पुष्पदंत स्वामी",
+      "offeredRun": 1
+    },
+    {
+      "id": 21,
+      "question": "द्रव्यों के समूह को क्या है?",
+      "answer": "विश्व",
+      "offeredRun": 1
+    },
+    {
+      "id": 22,
+      "question": "आदिपुराण के रचियता कौन है?",
+      "answer": "जिनसेन",
+      "offeredRun": 1
+    },
+    {
+      "id": 23,
+      "question": "धर्म का मूल क्या है?",
+      "answer": "सम्यक दर्शन",
+      "offeredRun": 1
+    },
+    {
+      "id": 24,
+      "question": "कैलाश पर्वत से कोनसे भगवान मोक्ष गये है?",
+      "answer": "आदिनाथ",
+      "offeredRun": 1
+    },
+    {
+      "id": 25,
+      "question": "मुक्ति किस अवस्था में होती है?",
+      "answer": "दिगंबर",
+      "offeredRun": 1
+    },
+    {
+      "id": 26,
+      "question": "पहला द्वीप कौनसा है?",
+      "answer": "जम्मू द्वीप",
+      "offeredRun": 1
+    },
+    {
+      "id": 27,
+      "question": "परमेष्ठी कितने होते है?",
+      "answer": "पांच",
+      "offeredRun": 1
+    },
+    {
+      "id": 28,
+      "question": "भगवान पार्श्वनाथ पर उपसार किसने किया था?",
+      "answer": "कमठ",
+      "offeredRun": 1
+    },
+    {
+      "id": 29,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 30,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 31,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 32,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 33,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 34,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 35,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 36,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 37,
+      "question": "सम्यक ज्ञान",
+      "answer": "Wide ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 38,
+      "question": "सम्यक ज्ञान",
+      "answer": "Wide ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 39,
+      "question": "सम्यक ज्ञान",
+      "answer": "Wide ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 40,
+      "question": "सम्यक चारित्र",
+      "answer": "No ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 41,
+      "question": "सम्यक चारित्र",
+      "answer": "No ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 42,
+      "question": "पहले चक्रवर्ती कौन थे?",
+      "answer": "भरत",
+      "offeredRun": 2
+    },
+    {
+      "id": 43,
+      "question": "हिंसा के भेद कितने होते है?",
+      "answer": "दो",
+      "offeredRun": 2
+    },
+    {
+      "id": 44,
+      "question": "समयसार के रचियता कौन है?",
+      "answer": "आ. कुंद कुंद स्वामी",
+      "offeredRun": 2
+    },
+    {
+      "id": 45,
+      "question": "आदिनाथ भगवान ने कितने बर्ष तपश्या की?",
+      "answer": "1000 बर्ष",
+      "offeredRun": 2
+    },
+    {
+      "id": 46,
+      "question": "कितने तीर्थंकर पद्मासन से मोक्ष गये?",
+      "answer": "तीन",
+      "offeredRun": 3
+    },
+    {
+      "id": 47,
+      "question": "मान",
+      "answer": "Bowled",
+      "offeredRun": 0
+    },
+    {
+      "id": 48,
+      "question": "माया",
+      "answer": "Bowled",
+      "offeredRun": 0
+    },
+    {
+      "id": 50,
+      "question": "लोभ",
+      "answer": "Bowled",
+      "offeredRun": 0
+    },
+    {
+      "id": 8,
+      "question": "सम्यक दर्शन",
+      "answer": "सम्यक दर्शन",
+      "offeredRun": 0
     }
   ]
 }

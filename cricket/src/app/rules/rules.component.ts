@@ -9,7 +9,7 @@ export class RulesComponent implements OnInit {
   rules = [
     {
       id: 1,
-      rule: "Maximux 6 players should participet."
+      rule: "Maximum 6 players should participet."
     },
     {
       id: 2,
@@ -35,6 +35,15 @@ export class RulesComponent implements OnInit {
       id: 7,
       rule:
         "If anyone have queries discuss before starting your match. We will not consider it in the middle of match."
+    },
+    {
+      id: 8,
+      rule: "क्रोध, मान, माया, लोभ = Out"
+    },
+    {
+      id: 9,
+      rule:
+        "सम्यक दर्शन = Dot  ball, सम्यक ज्ञान = Wide ball, सम्यक चारित्र = No ball"
     }
   ];
   constructor() {}

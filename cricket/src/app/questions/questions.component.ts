@@ -18,14 +18,16 @@ export class QuestionsComponent implements OnInit {
   constructor(private scoreCardService: ScoreCardService) {}
 
   ngOnInit() {
-    this.questions = this.scoreCardService.getQuestions().questions;
+    this.scoreCardService.fetchQuestions().subscribe((questionList: any) => {
+      this.questions = questionList;
+    });
     this.questionDeepCopy = JSON.parse(JSON.stringify(this.questions));
   }
   nextQuestion(questionObj: any): void {
     this.displayAnswer = false;
     this.startImageHide = false;
-    var i = this.questions.length,
-      j = 0;
+    const i = this.questions.length;
+    let j = 0;
     if (i) {
       j = Math.floor(Math.random() * (i + 1));
       if (this.questions[j]) {

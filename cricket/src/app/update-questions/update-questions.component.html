@@ -1,0 +1,112 @@
+<div class="container">
+  <h2 class="col text-center mt-3 font-effect-shadow-multiple">
+    Add new question form
+  </h2>
+  <div class="card mt-3">
+    <div class="card-body">
+      <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="col-md-4">Question number</label>
+          <input type="number" class="form-control" formControlName="id" #id />
+          <div
+            *ngIf="
+              questionForm.controls['id'].invalid &&
+              (questionForm.controls['id'].dirty ||
+                questionForm.controls['id'].touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="questionForm.controls['id'].errors.required">
+              Question number is required.
+            </div>
+          </div>
+          <!-- {{todoForm.pristine + '' + todoForm.invalid + '' +todoForm.controls['title'].valid}} -->
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Question</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="question"
+            #question
+          />
+          <div
+            *ngIf="
+              questionForm.controls['question'].invalid &&
+              (questionForm.controls['question'].dirty ||
+                questionForm.controls['question'].touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="questionForm.controls['question'].errors.required">
+              Question is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Answer</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="answer"
+            #answer
+          />
+          <div
+            *ngIf="
+              questionForm.controls['answer'].invalid &&
+              (questionForm.controls['answer'].dirty ||
+                questionForm.controls['answer'].touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="questionForm.controls['answer'].errors.required">
+              Answer is required.
+            </div>
+          </div>
+          <!-- {{todoForm.pristine + '' + todoForm.invalid + '' +todoForm.controls['title'].valid}} -->
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">Offered run</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="offeredRun"
+            #offeredRun
+          />
+          <div
+            *ngIf="
+              questionForm.controls['offeredRun'].invalid &&
+              (questionForm.controls['offeredRun'].dirty ||
+                questionForm.controls['offeredRun'].touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="questionForm.controls['offeredRun'].errors.required">
+              Offered run is required.
+            </div>
+          </div>
+          <!-- {{todoForm.pristine + '' + todoForm.invalid + '' +todoForm.controls['title'].valid}} -->
+        </div>
+        <div class="form-group col text-center">
+          <button
+            type="submit"
+            class="btn btn-success mr-2"
+            [disabled]="questionForm.pristine || questionForm.invalid"
+          >
+            Submit
+          </button>
+          <button class="btn btn-danger mr-2" (click)="clearForm()">
+            Clear
+          </button>
+          <button class="btn btn-dark mr-2" routerLink="/question-list">
+            Cancel
+          </button>
+          <button class="btn btn-primary" routerLink="/question-list">
+            <em class="fas fa-bars"></em>
+            View List
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { AppSettings } from "../Static/constants/appsetting";
 
 @Component({
   selector: "app-main-page",
@@ -6,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./main-page.component.scss"]
 })
 export class MainPageComponent implements OnInit {
-  title = "Cricket Match";
+  title = AppSettings.MAIN_PAGE_TITLE;
   constructor() {}
 
   ngOnInit() {}
