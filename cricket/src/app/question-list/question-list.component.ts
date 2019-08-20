@@ -1,6 +1,6 @@
 import { QuestionModel } from "./../services/models/question.model";
 import { ScoreCardService } from "./../services/score-card.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { Observable } from "rxjs";
 import { Select, Store } from "@ngxs/store";
 import {
@@ -10,6 +10,7 @@ import {
   AddQuestion
 } from "../+state/cricket.actions";
 import { QuestionState } from "../+state/cricket.state";
+
 @Component({
   selector: "app-question-list",
   templateUrl: "./question-list.component.html",
@@ -17,6 +18,7 @@ import { QuestionState } from "../+state/cricket.state";
 })
 export class QuestionListComponent implements OnInit {
   @Select(QuestionState.getQuestionList) questions: Observable<QuestionModel[]>;
+
   constructor(
     private scoreCardService: ScoreCardService,
     private store: Store

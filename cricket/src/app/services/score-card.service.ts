@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { resp } from "./questions";
 import { HttpClient } from "@angular/common/http";
 import { QuestionModel } from "./models/question.model";
+import { AppSettings } from "../Static/constants/appsetting";
 
 @Injectable({
   providedIn: "root"
@@ -15,27 +16,33 @@ export class ScoreCardService {
   teamData = [];
   playerScore: any;
   bowlerScore: any;
+  dummyQuestionTable = AppSettings.DUMMYQUESTIONTABLE;
+  questionTableData = AppSettings.QUESTIONSRESPONSE;
 
   constructor(private http: HttpClient) {}
 
   fetchQuestions() {
-    return this.http.get<QuestionModel[]>("http://localhost:3000/questions");
+    return this.http.get<QuestionModel[]>(
+      `http://localhost:3000/${this.dummyQuestionTable}`
+    );
   }
 
   deleteQuestion(id: number) {
-    return this.http.delete(`http://localhost:3000/questions/${id}`);
+    return this.http.delete(
+      `http://localhost:3000/${this.dummyQuestionTable}/${id}`
+    );
   }
 
   addQuestion(payload: QuestionModel) {
     return this.http.post<QuestionModel>(
-      "http://localhost:3000/questions",
+      `http://localhost:3000/${this.dummyQuestionTable}`,
       payload
     );
   }
 
   updateQuestion(payload: QuestionModel, id: number) {
     return this.http.put<QuestionModel>(
-      `http://localhost:3000/questions/${id}`,
+      `http://localhost:3000/${this.dummyQuestionTable}/${id}`,
       payload
     );
   }
@@ -49,7 +56,7 @@ export class ScoreCardService {
   }
   updateScore(questionObj: any): void {
     if (questionObj) {
-      if (questionObj.question.toLowerCase() === "bowled") {
+      if (questionObj.answer.toLowerCase() === "bowled") {
         this.scoreCardObj.totalWicket++;
       }
       if (questionObj.offeredRun) {
@@ -57,9 +64,10 @@ export class ScoreCardService {
           this.scoreCardObj.totalRun + questionObj.offeredRun;
       }
       if (
-        questionObj.question.toLowerCase() === "wide ball" ||
-        questionObj.question.toLowerCase() === "no ball"
+        questionObj.answer.toLowerCase() === "wide ball" ||
+        questionObj.answer.toLowerCase() === "no ball"
       ) {
+        return;
       } else {
         this.scoreCardObj.totalBall++;
       }
