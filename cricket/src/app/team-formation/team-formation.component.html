@@ -171,15 +171,32 @@
       </div>
     </div>
   </div>
-
-  <div
-    *ngIf="count >= 2 && playersTeamA.length >= 6 && playersTeamB.length >= 6"
-  >
-    <a
-      class="btn btn-success"
-      [routerLink]="['../scoreboard']"
-      (click)="addTeamDetails()"
-      >Toss</a
-    >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <div
+          *ngIf="
+            count >= 2 && playersTeamA.length >= 6 && playersTeamB.length >= 6
+          "
+        >
+          <a
+            class="btn btn-success mr-3"
+            (click)="navigateToScoreboard(teamAName)"
+            >Team {{ teamAName }} won toss</a
+          >
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div
+          *ngIf="
+            count >= 2 && playersTeamA.length >= 6 && playersTeamB.length >= 6
+          "
+        >
+          <a class="btn btn-success" (click)="navigateToScoreboard(teamBName)"
+            >Team {{ teamBName }} won toss</a
+          >
+        </div>
+      </div>
+    </div>
   </div>
 </div>

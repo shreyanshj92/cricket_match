@@ -8,9 +8,9 @@ import {
   AddQuestion,
   SetSelectedQuestion,
   UpdateQuestion
-} from "../+state/cricket.actions";
+} from "../+state/question.actions";
 import { Observable } from "rxjs";
-import { QuestionState } from "../+state/cricket.state";
+import { QuestionState } from "../+state/question.state";
 
 @Component({
   selector: "app-update-questions",

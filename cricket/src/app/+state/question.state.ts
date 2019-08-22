@@ -6,7 +6,7 @@ import {
   GetQuestions,
   SetSelectedQuestion,
   UpdateQuestion
-} from "./cricket.actions";
+} from "./question.actions";
 import { ScoreCardService } from "../services/score-card.service";
 import { tap } from "rxjs/operators";
 

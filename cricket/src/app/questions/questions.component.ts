@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ScoreCardService } from "../services/score-card.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-questions",
@@ -49,9 +50,15 @@ export class QuestionsComponent implements OnInit {
   catchOut() {
     const questionObj = {
       question: "bowled",
-      answer: "Out",
+      answer: "bowled",
       offeredRun: 0
     };
+    Swal.fire({
+      type: "error",
+      title: "Oops... Out",
+      showConfirmButton: false,
+      timer: 1500
+    });
     this.nextQuestion(questionObj);
   }
 }

@@ -8,8 +8,8 @@ import {
   GetQuestions,
   SetSelectedQuestion,
   AddQuestion
-} from "../+state/cricket.actions";
-import { QuestionState } from "../+state/cricket.state";
+} from "../+state/question.actions";
+import { QuestionState } from "../+state/question.state";
 
 @Component({
   selector: "app-question-list",

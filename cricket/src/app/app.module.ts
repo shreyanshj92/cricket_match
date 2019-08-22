@@ -14,7 +14,7 @@ import { NgxsModule } from "@ngxs/store";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { HttpClientModule } from "@angular/common/http";
-import { QuestionState } from "./+state/cricket.state";
+import { QuestionState } from "./+state/question.state";
 import {
   MatInputModule,
   MatPaginatorModule,
@@ -22,7 +22,8 @@ import {
   MatSortModule,
   MatTableModule
 } from "@angular/material";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { TeamState } from "./+state/teamformation/teamformation.state";
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([QuestionState]),
+    NgxsModule.forRoot([TeamState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     HttpClientModule,

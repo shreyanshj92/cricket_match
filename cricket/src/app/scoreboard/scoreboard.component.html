@@ -13,10 +13,13 @@
 
     <h3 style="display: inline;">
       <span class="badge badge-secondary"
-        >Team- A :
-        <span
+        >{{ teamWonToss }} :
+        <span *ngIf="this.scoreCard.totalWicket < 6"
           >{{ this.scoreCard.totalRun }}/{{ this.scoreCard.totalWicket }}</span
         >
+        <span *ngIf="this.scoreCard.totalWicket === 6">{{
+          this.scoreCard.totalRun
+        }}</span>
       </span>
     </h3>
     <span>over: {{ calOverCount() }}</span>
@@ -28,7 +31,7 @@
         alt="bat-logo"
         height="30"
         width="20"
-      />{{ displayBatsman }} : {{ displayBatsman }}
+      />{{ displayBatsman }}
       <span>({{ playerBall }})</span>
     </span>
     <span style="margin-left: 20px; color: blue">
@@ -40,6 +43,9 @@
       />{{ displayBowler }} : {{ displayBowler }} <span>({{ wicket }})</span>
     </span>
     <span class="vl"></span>
+    <span style="margin-left: 450px; margin-top: 7px"
+      >Extra runs: {{ this.scoreCard.extraRun }}</span
+    >
     <span style="margin-left: 450px; margin-top: 7px"
       >Run rate: {{ calRunRate() }}</span
     >
