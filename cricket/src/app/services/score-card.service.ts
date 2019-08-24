@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { resp } from "./questions";
+
 import { HttpClient } from "@angular/common/http";
-import { QuestionModel } from "./models/question.model";
-import { AppSettings } from "../Static/constants/appsetting";
-import { ScoreboardService } from "./scoreboard/scoreboard.service";
+import { TeamPlayerScoreModel } from "./models/teamplayercore.model";
+import { AddScorecard } from "../+state/scoreboard/scoreboard.actions";
+import { Store } from "@ngxs/store";
+import { TeamState } from "../+state/teamformation/teamformation.state";
 
 @Injectable({
   providedIn: "root"
@@ -18,6 +19,9 @@ export class ScoreCardService {
     totalSixes: 0
   };
   teamData = [];
+  teamDetails: any;
+  teamWonToss: string;
+  tossWinnerTeam: any;
 
   teamPlayerScore = {
     teamName: "",
@@ -31,49 +35,27 @@ export class ScoreCardService {
     }
   };
 
-  bowlerScore: any;
-  // dummyQuestionTable = AppSettings.DUMMYQUESTIONTABLE;
-  dummyQuestionTable = AppSettings.QUESTIONSRESPONSE;
-  questionTableData = AppSettings.QUESTIONSRESPONSE;
-
-  constructor(
-    private http: HttpClient,
-    private scoreboardService: ScoreboardService
-  ) {}
-
-  fetchQuestions() {
-    return this.http.get<QuestionModel[]>(
-      `http://localhost:3000/${this.dummyQuestionTable}`
+  constructor(private http: HttpClient, private store: Store) {}
+  fetchScorecard() {
+    return this.http.get<TeamPlayerScoreModel[]>(
+      "http://localhost:3000/teamPlayerScore"
     );
   }
-
-  deleteQuestion(id: number) {
-    return this.http.delete(
-      `http://localhost:3000/${this.dummyQuestionTable}/${id}`
-    );
-  }
-
-  addQuestion(payload: QuestionModel) {
-    return this.http.post<QuestionModel>(
-      `http://localhost:3000/${this.dummyQuestionTable}`,
+  addScorecard(payload: TeamPlayerScoreModel) {
+    return this.http.post<TeamPlayerScoreModel>(
+      "http://localhost:3000/teamPlayerScore",
       payload
     );
-  }
-
-  updateQuestion(payload: QuestionModel, id: number) {
-    return this.http.put<QuestionModel>(
-      `http://localhost:3000/${this.dummyQuestionTable}/${id}`,
-      payload
-    );
-  }
-
-  getQuestions(): any {
-    return resp;
   }
 
   getScore(): any {
+    this.findTossWinnerTeam();
     return this.scoreCardObj;
   }
+  getPlayerScore() {
+    return this.teamPlayerScore;
+  }
+
   updateScore(questionObj: any): void {
     if (questionObj) {
       if (
@@ -84,16 +66,21 @@ export class ScoreCardService {
       } else {
         this.teamPlayerScore.playerScore.ball++;
         this.scoreCardObj.totalBall++;
-        this.teamPlayerScore.playerScore.strikeRate = (
-          (this.teamPlayerScore.playerScore.run * 100) /
-          this.teamPlayerScore.playerScore.ball
-        ).toFixed(2);
       }
+
       if (questionObj.offeredRun) {
         this.scoreCardObj.totalRun =
           this.scoreCardObj.totalRun + questionObj.offeredRun;
-        this.teamPlayerScore.playerScore.run =
-          this.teamPlayerScore.playerScore.run + questionObj.offeredRun;
+        if (
+          questionObj.answer.toLowerCase() === "wide ball" ||
+          questionObj.answer.toLowerCase() === "no ball"
+        ) {
+          return;
+        } else {
+          this.teamPlayerScore.playerScore.run =
+            this.teamPlayerScore.playerScore.run + questionObj.offeredRun;
+        }
+
         if (questionObj.offeredRun === 4) {
           this.scoreCardObj.totalFours++;
           this.teamPlayerScore.playerScore.four++;
@@ -105,7 +92,16 @@ export class ScoreCardService {
       }
       if (questionObj.answer.toLowerCase() === "bowled") {
         this.scoreCardObj.totalWicket++;
-        this.scoreboardService.addTeamPlayerScore(this.teamPlayerScore);
+        if (
+          this.teamPlayerScore.playerScore.run &&
+          this.teamPlayerScore.playerScore.ball
+        ) {
+          this.teamPlayerScore.playerScore.strikeRate = this.calStrikeRate(
+            this.teamPlayerScore.playerScore.run,
+            this.teamPlayerScore.playerScore.ball
+          );
+        }
+        this.store.dispatch(new AddScorecard(this.teamPlayerScore));
         this.teamPlayerScore.playerScore.run = 0;
         this.teamPlayerScore.playerScore.ball = 0;
         this.teamPlayerScore.playerScore.four = 0;
@@ -113,17 +109,19 @@ export class ScoreCardService {
         this.teamPlayerScore.playerScore.strikeRate = "";
       }
     }
-    console.log("this.scoreCardObj", this.scoreCardObj, this.teamPlayerScore);
   }
 
-  calRunRate(): string {
-    if (this.scoreCardObj.totalRun && this.scoreCardObj.totalBall) {
-      return (
-        (this.scoreCardObj.totalRun * 6) /
-        this.scoreCardObj.totalBall
-      ).toFixed(1);
-    } else {
-      return;
+  findTossWinnerTeam() {
+    this.teamPlayerScore.teamName = this.teamWonToss;
+    this.teamDetails.forEach(team => {
+      if (team.teamName === this.teamWonToss) {
+        this.tossWinnerTeam = team;
+      }
+    });
+    if (this.tossWinnerTeam) {
+      this.teamPlayerScore.playerScore.name = this.tossWinnerTeam.teamplayer[
+        this.scoreCardObj.totalWicket
+      ].firstName;
     }
   }
   calOverCount(): string {
@@ -142,17 +140,12 @@ export class ScoreCardService {
     }
   }
   calStrikeRate(run: number, ball: number): string {
-    return ((run / ball) * 100).toFixed(2);
+    return ((run / ball) * 100).toFixed();
   }
-  addPlayerScore() {
-    let getBowlers;
 
-    if (Math.floor(this.scoreCardObj.totalBall / 6) < 6) {
-      if (Math.floor(this.scoreCardObj.totalBall / 6) % 2 === 0) {
-        return getBowlers[0];
-      } else {
-        return getBowlers[1];
-      }
-    }
+  addTeamDetails(teamName: string) {
+    this.teamDetails = this.store.selectSnapshot(TeamState.getTeamList);
+    // this.teamDetails = this.teamformationService.fetchTeams();
+    this.teamWonToss = teamName;
   }
 }

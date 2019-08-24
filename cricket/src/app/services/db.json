@@ -65,94 +65,21 @@
       "question": "सम्यक चारित्र",
       "answer": "No ball",
       "offeredRun": 1
-    }
-  ],
-  "teamDetails": [
-    {
-      "teamName": "A",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "a",
-          "lastName": "a",
-          "role": "AllRounder"
-        },
-        {
-          "id": 2,
-          "firstName": "a",
-          "lastName": "a",
-          "role": "Batsman"
-        },
-        {
-          "id": 3,
-          "firstName": "a",
-          "lastName": "a",
-          "role": "Captain"
-        },
-        {
-          "id": 4,
-          "firstName": "c",
-          "lastName": "c",
-          "role": "Batsman"
-        },
-        {
-          "id": 5,
-          "firstName": "v",
-          "lastName": "v",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "n",
-          "lastName": "n",
-          "role": "Bowler"
-        }
-      ],
-      "id": 1
     },
     {
-      "teamName": "B",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "a",
-          "lastName": "a",
-          "role": "AllRounder"
-        },
-        {
-          "id": 2,
-          "firstName": "a",
-          "lastName": "a",
-          "role": "Batsman"
-        },
-        {
-          "id": 3,
-          "firstName": "c",
-          "lastName": "c",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "c",
-          "lastName": "c",
-          "role": "Captain"
-        },
-        {
-          "id": 5,
-          "firstName": "d",
-          "lastName": "d",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "b",
-          "lastName": "b",
-          "role": "Bowler"
-        }
-      ],
-      "id": 2
+      "id": 14,
+      "question": "lknl",
+      "answer": "nln",
+      "offeredRun": 2
+    },
+    {
+      "id": 16,
+      "question": "KBK",
+      "answer": " ,LNK",
+      "offeredRun": 3
     }
   ],
+  "teamDetails": [],
   "teamPlayerScore": [],
   "cricket_question": [
     {

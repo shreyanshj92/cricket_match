@@ -14,11 +14,11 @@
     <h3 style="display: inline;">
       <span class="badge badge-secondary"
         >{{ teamWonToss }} :
-        <span *ngIf="this.scoreCard.totalWicket < 6"
-          >{{ this.scoreCard.totalRun }}/{{ this.scoreCard.totalWicket }}</span
+        <span *ngIf="scoreCard.totalWicket < 6"
+          >{{ scoreCard.totalRun }}/{{ scoreCard.totalWicket }}</span
         >
-        <span *ngIf="this.scoreCard.totalWicket === 6">{{
-          this.scoreCard.totalRun
+        <span *ngIf="scoreCard.totalWicket === 6">{{
+          scoreCard.totalRun
         }}</span>
       </span>
     </h3>
@@ -31,8 +31,8 @@
         alt="bat-logo"
         height="30"
         width="20"
-      />{{ displayBatsman }}
-      <span>({{ playerBall }})</span>
+      />{{ displayBatsman.name }} <span>{{ displayBatsman.run }}</span
+      ><span>({{ displayBatsman.ball }})</span>
     </span>
     <span style="margin-left: 20px; color: blue">
       <img
@@ -40,14 +40,12 @@
         alt="bat-logo"
         height="30"
         width="30"
-      />{{ displayBowler }} : {{ displayBowler }} <span>({{ wicket }})</span>
+      />{{ displayBowler }} : {{ displayBowler }} <span></span>
     </span>
     <span class="vl"></span>
-    <span style="margin-left: 450px; margin-top: 7px"
-      >Extra runs: {{ this.scoreCard.extraRun }}</span
+    <span style="margin-left: 450px; margin-top: 7px" *ngIf="scoreCard.extraRun"
+      >Extra runs: {{ scoreCard.extraRun }}</span
     >
-    <span style="margin-left: 450px; margin-top: 7px"
-      >Run rate: {{ calRunRate() }}</span
-    >
+    <span style="margin-left: 20px;">Run rate: {{ runRate }}</span>
   </div>
 </div>

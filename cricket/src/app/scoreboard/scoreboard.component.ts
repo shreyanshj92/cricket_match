@@ -1,10 +1,8 @@
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { ScoreCardService } from "../services/score-card.service";
-import { TeamFormationModel } from "../services/models/teamformation.model";
-import { TeamState } from "../+state/teamformation/teamformation.state";
 import { Store } from "@ngxs/store";
-import { ScoreboardService } from "../services/scoreboard/scoreboard.service";
+import { ScoreCardState } from "../+state/scoreboard/scoreboard.state";
 
 @Component({
   selector: "app-scoreboard",
@@ -14,28 +12,45 @@ import { ScoreboardService } from "../services/scoreboard/scoreboard.service";
 export class ScoreboardComponent implements OnInit {
   freeHitballFlag: boolean;
   scoreCard: any;
-  displayBatsman: string;
+  displayBatsman: any;
   displayBowler: string;
   firstInningScore: string;
   teamWonToss: any;
   tossWinnerTeam: any;
-  teamDetails: TeamFormationModel[];
+  teamScoreBoardObj: any;
+  runRate: string;
   constructor(
     private scoreCardService: ScoreCardService,
-    private store: Store,
     private route: ActivatedRoute,
-    private scoreboardService: ScoreboardService
+    private store: Store
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: any) => {
       if ("team" in params) {
         this.teamWonToss = params.team;
+        this.scoreCardService.addTeamDetails(this.teamWonToss);
       }
     });
-    this.teamDetails = this.store.selectSnapshot(TeamState.getTeamList);
-    this.getTosswinnerTeamDetails();
     this.scoreCard = this.scoreCardService.getScore();
+    const playerDetails = this.scoreCardService.getPlayerScore();
+    if (playerDetails) {
+      this.displayBatsman =
+        playerDetails.playerScore[this.scoreCard.totalWicket];
+    }
+    this.scoreCard = this.scoreCardService.getScore();
+    console.log("displayBatsman", this.displayBatsman);
+    this.calRunRate();
+
+    // this.teamScoreBoardObj = this.store.selectSnapshot(
+    //   ScoreCardState.getScorecardList
+    // );
+    // console.log("teamScoreBoardObj", this.teamScoreBoardObj);
+    // if (this.teamScoreBoardObj.length > 0) {
+    //   this.displayBatsman = this.teamScoreBoardObj[
+    //     this.scoreCard.totalWicket
+    //   ].playerScore;
+    // }
     if (this.scoreCard.totalWicket === 6) {
       this.firstInningScore = this.scoreCard.totalRun;
     } else if (this.calOverCount()) {
@@ -45,16 +60,11 @@ export class ScoreboardComponent implements OnInit {
     }
   }
 
-  getTosswinnerTeamDetails(): void {
-    this.teamDetails.forEach((teamDetail: any) => {
-      if (this.teamWonToss === teamDetail.teamName) {
-        this.tossWinnerTeam = teamDetail;
-      }
-    });
-  }
-
-  calRunRate(): string {
-    return this.scoreCardService.calRunRate();
+  calRunRate(): void {
+    this.runRate = (
+      (this.scoreCard.totalRun * 6) /
+      this.scoreCard.totalBall
+    ).toFixed(1);
   }
 
   calOverCount(): string {
@@ -63,45 +73,6 @@ export class ScoreboardComponent implements OnInit {
       return overCount;
     } else {
       return "6.0";
-    }
-  }
-  playerScore(): string {
-    if (this.scoreCard.totalWicket < 6) {
-      switch (this.scoreCard.totalWicket) {
-        case 0:
-          // this.scoreboardService.addTeamPlayerScore();
-          return (
-            this.tossWinnerTeam.playerList[this.scoreCard.totalWicket] + ":"
-          );
-
-        case 1:
-          return (
-            this.tossWinnerTeam.playerList[this.scoreCard.totalWicket] + ":"
-          );
-
-        case 2:
-          return (
-            this.tossWinnerTeam.playerList[this.scoreCard.totalWicket] + ":"
-          );
-
-        case 3:
-          return (
-            this.tossWinnerTeam.playerList[this.scoreCard.totalWicket] + ":"
-          );
-
-        case 4:
-          return (
-            this.tossWinnerTeam.playerList[this.scoreCard.totalWicket] + ":"
-          );
-
-        case 5:
-          return (
-            this.tossWinnerTeam.playerList[this.scoreCard.totalWicket] + ":"
-          );
-
-        default:
-          break;
-      }
     }
   }
 }

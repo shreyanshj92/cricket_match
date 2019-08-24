@@ -24,6 +24,9 @@ import {
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TeamState } from "./+state/teamformation/teamformation.state";
+import { ScoreCardState } from "./+state/scoreboard/scoreboard.state";
+import { environment } from "src/environments/environment";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +37,16 @@ import { TeamState } from "./+state/teamformation/teamformation.state";
     RulesComponent,
     QuestionsComponent,
     UpdateQuestionsComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgxsModule.forRoot([QuestionState]),
-    NgxsModule.forRoot([TeamState]),
+    NgxsModule.forRoot([QuestionState, TeamState, ScoreCardState], {
+      developmentMode: !environment.production
+    }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     HttpClientModule,

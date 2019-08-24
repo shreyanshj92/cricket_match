@@ -1,5 +1,4 @@
 import { QuestionModel } from "./../services/models/question.model";
-import { ScoreCardService } from "./../services/score-card.service";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Observable } from "rxjs";
 import { Select, Store } from "@ngxs/store";
@@ -19,10 +18,7 @@ import { QuestionState } from "../+state/question.state";
 export class QuestionListComponent implements OnInit {
   @Select(QuestionState.getQuestionList) questions: Observable<QuestionModel[]>;
 
-  constructor(
-    private scoreCardService: ScoreCardService,
-    private store: Store
-  ) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
     this.store.dispatch(new GetQuestions());
