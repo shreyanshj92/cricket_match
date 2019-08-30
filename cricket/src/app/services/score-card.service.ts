@@ -34,6 +34,7 @@ export class ScoreCardService {
       strikeRate: ""
     }
   };
+  tossLosserTeam: any;
 
   constructor(private http: HttpClient, private store: Store) {}
   fetchScorecard() {
@@ -42,6 +43,7 @@ export class ScoreCardService {
     );
   }
   addScorecard(payload: TeamPlayerScoreModel) {
+    console.log("payload", payload);
     return this.http.post<TeamPlayerScoreModel>(
       "http://localhost:3000/teamPlayerScore",
       payload
@@ -49,7 +51,6 @@ export class ScoreCardService {
   }
 
   getScore(): any {
-    this.findTossWinnerTeam();
     return this.scoreCardObj;
   }
   getPlayerScore() {
@@ -109,21 +110,28 @@ export class ScoreCardService {
         this.teamPlayerScore.playerScore.strikeRate = "";
       }
     }
+    this.findTossWinnerTeam();
   }
 
   findTossWinnerTeam() {
-    this.teamPlayerScore.teamName = this.teamWonToss;
     this.teamDetails.forEach(team => {
-      if (team.teamName === this.teamWonToss) {
+      if (
+        team.teamName === this.teamWonToss &&
+        this.scoreCardObj.totalWicket < 6
+      ) {
+        this.teamPlayerScore.teamName = team.teamName;
+        this.teamPlayerScore.playerScore.name =
+          team.teamplayer[this.scoreCardObj.totalWicket].firstName;
         this.tossWinnerTeam = team;
+      } else {
+        this.teamPlayerScore.teamName = team.teamName;
+        this.teamPlayerScore.playerScore.name =
+          team.teamplayer[this.scoreCardObj.totalWicket].firstName;
+        this.tossLosserTeam = team;
       }
     });
-    if (this.tossWinnerTeam) {
-      this.teamPlayerScore.playerScore.name = this.tossWinnerTeam.teamplayer[
-        this.scoreCardObj.totalWicket
-      ].firstName;
-    }
   }
+
   calOverCount(): string {
     if (this.scoreCardObj.totalBall) {
       if (Math.floor(this.scoreCardObj.totalBall / 6) < 6) {
@@ -145,7 +153,6 @@ export class ScoreCardService {
 
   addTeamDetails(teamName: string) {
     this.teamDetails = this.store.selectSnapshot(TeamState.getTeamList);
-    // this.teamDetails = this.teamformationService.fetchTeams();
     this.teamWonToss = teamName;
   }
 }

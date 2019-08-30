@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 class="col text-center mt-3 mb-3 font-effect-shadow-multiple">
+    Scorecard
+  </h2>
+  <div>
+    <table class="table table-bordered">
+      <thead>
+        <th scope="col">Player</th>
+        <th scope="col">Run</th>
+        <th scope="col">Ball</th>
+        <th scope="col">Six run</th>
+        <th scope="col">Four</th>
+        <th scope="col">SR</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of playerScore | async">
+          <td>{{ player.name }}</td>
+          <td>{{ player.run }}</td>
+          <td>{{ player.ball }}</td>
+          <td>{{ player.six }}</td>
+          <td>{{ player.four }}</td>
+          <td>{{ player.strikeRate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

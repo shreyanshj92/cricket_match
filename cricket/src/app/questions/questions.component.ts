@@ -61,6 +61,7 @@ export class QuestionsComponent implements OnInit {
     Swal.fire({
       type: "error",
       title: "Oops... Out",
+      imageUrl: "../../assets/images/out.jpg",
       showConfirmButton: false,
       timer: 1500
     });

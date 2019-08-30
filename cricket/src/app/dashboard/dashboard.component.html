@@ -1,1 +1,91 @@
-<p>dashboard works!</p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-4 ">
+      <div
+        class="card text-center border-dark mb-3"
+        style="max-width: 22rem;height: 16rem;"
+        routerLink="../home"
+        routerLinkActive="router-link-active"
+      >
+        <div class="card-body text-white bg-dark m-1">
+          <h5 class="card-title">Main Screen</h5>
+          <p class="card-text">
+            You can start game.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-center border-success mb-3"
+        style="max-width: 22rem;height: 16rem;"
+        (click)="navigateToTeamFormation()"
+      >
+        <div class="card-body text-white bg-success m-1">
+          <h5 class="card-title">Team formation</h5>
+          <p class="card-text">
+            You have to create team.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-center border-primary mb-3"
+        style="max-width: 22rem;height: 16rem;"
+        (click)="navigateToQuestionList()"
+      >
+        <div class="card-body text-white bg-primary m-1">
+          <h5 class="card-title">Question list</h5>
+          <p class="card-text">
+            You can see question list and edit/delete it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-4">
+      <div
+        class="card text-center border-danger mb-3"
+        style="max-width: 22rem;height: 16rem;"
+        (click)="navigateToAddQuestion()"
+      >
+        <div class="card-body text-white bg-danger m-1">
+          <h5 class="card-title">Add question</h5>
+          <p class="card-text">
+            You can add your own questions.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-center border-info mb-3"
+        style="max-width: 22rem;height: 16rem;"
+        (click)="navigateToRule()"
+      >
+        <div class="card-body text-white bg-info m-1">
+          <h5 class="card-title">Rules</h5>
+          <p class="card-text">
+            Read all rules carefully.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div
+        class="card text-center border-warning mb-3"
+        style="max-width: 22rem;height: 16rem;"
+        (click)="navigateToScoreboard()"
+      >
+        <div class="card-body text-white bg-warning m-1">
+          <h5 class="card-title">Scorecard</h5>
+          <p class="card-text">
+            To strat your game
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,7 +26,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TeamState } from "./+state/teamformation/teamformation.state";
 import { ScoreCardState } from "./+state/scoreboard/scoreboard.state";
 import { environment } from "src/environments/environment";
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { DashboardRoutingModule } from "./dashboard/dashboard-routing.module";
+import { ScorecartComponent } from "./scorecart/scorecart.component";
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
   declarations: [
@@ -38,11 +41,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     QuestionsComponent,
     UpdateQuestionsComponent,
     QuestionListComponent,
-    DashboardComponent
+    DashboardComponent,
+    ScorecartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DashboardRoutingModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([QuestionState, TeamState, ScoreCardState], {
       developmentMode: !environment.production
@@ -55,6 +60,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
+    SweetAlert2Module.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [],

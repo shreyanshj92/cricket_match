@@ -31,8 +31,8 @@
         alt="bat-logo"
         height="30"
         width="20"
-      />{{ displayBatsman.name }} <span>{{ displayBatsman.run }}</span
-      ><span>({{ displayBatsman.ball }})</span>
+      />
+      <span>{{ getPlayerScore() }}</span>
     </span>
     <span style="margin-left: 20px; color: blue">
       <img
@@ -46,6 +46,9 @@
     <span style="margin-left: 450px; margin-top: 7px" *ngIf="scoreCard.extraRun"
       >Extra runs: {{ scoreCard.extraRun }}</span
     >
-    <span style="margin-left: 20px;">Run rate: {{ runRate }}</span>
+    <span style="margin-left: 20px;">Run rate: {{ calRunRate() }}</span>
+    <button type="button" class="btn btn-primary" (click)="displayScoreboard()">
+      Show Scoreboard
+    </button>
   </div>
 </div>

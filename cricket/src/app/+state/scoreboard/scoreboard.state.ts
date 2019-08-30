@@ -53,6 +53,7 @@ export class ScoreCardState {
   ) {
     return this.scoreCardService.addScorecard(payload).pipe(
       tap(result => {
+        console.log("result", result);
         const state = getState();
         patchState({
           scorecards: [...state.scorecards, result]
