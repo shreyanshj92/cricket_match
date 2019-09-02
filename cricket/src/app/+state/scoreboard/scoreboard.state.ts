@@ -4,19 +4,25 @@ import { ScoreCardService } from "src/app/services/score-card.service";
 import {
   SetSelectedScorecard,
   AddScorecard,
-  GetScorecards
+  GetScorecards,
+  AddBowlerScorecard
 } from "./scoreboard.actions";
-import { TeamPlayerScoreModel } from "src/app/services/models/teamplayercore.model";
+import {
+  TeamPlayerScoreBatsmanModel,
+  TeamPlayerScoreBowlerModel
+} from "src/app/services/models/teamplayercore.model";
 
 export class ScoreCardStateModel {
-  scorecards: TeamPlayerScoreModel[];
-  selectedScorecard: TeamPlayerScoreModel;
+  batsmanScorecards: TeamPlayerScoreBatsmanModel[];
+  bowlerScorecards: TeamPlayerScoreBowlerModel[];
+  selectedScorecard: TeamPlayerScoreBatsmanModel;
 }
 
 @State<ScoreCardStateModel>({
-  name: "scorecards",
+  name: "batsmanScorecards",
   defaults: {
-    scorecards: [],
+    batsmanScorecards: [],
+    bowlerScorecards: [],
     selectedScorecard: null
   }
 })
@@ -25,7 +31,7 @@ export class ScoreCardState {
 
   @Selector()
   static getScorecardList(state: ScoreCardStateModel) {
-    return state.scorecards;
+    return state.batsmanScorecards;
   }
 
   @Selector()
@@ -40,7 +46,7 @@ export class ScoreCardState {
         const state = getState();
         setState({
           ...state,
-          scorecards: result
+          batsmanScorecards: result
         });
       })
     );
@@ -53,10 +59,24 @@ export class ScoreCardState {
   ) {
     return this.scoreCardService.addScorecard(payload).pipe(
       tap(result => {
-        console.log("result", result);
         const state = getState();
         patchState({
-          scorecards: [...state.scorecards, result]
+          batsmanScorecards: [...state.batsmanScorecards, result]
+        });
+      })
+    );
+  }
+
+  @Action(AddBowlerScorecard)
+  addBowlerScorecard(
+    { getState, patchState }: StateContext<ScoreCardStateModel>,
+    { payload }: AddBowlerScorecard
+  ) {
+    return this.scoreCardService.addBowlerScorecard(payload).pipe(
+      tap(result => {
+        const state = getState();
+        patchState({
+          bowlerScorecards: [...state.bowlerScorecards, result]
         });
       })
     );
@@ -68,7 +88,6 @@ export class ScoreCardState {
     { payload }: SetSelectedScorecard
   ) {
     const state = getState();
-    console.log(state);
     setState({
       ...state,
       selectedScorecard: payload

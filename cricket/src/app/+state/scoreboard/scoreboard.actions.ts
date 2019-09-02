@@ -1,9 +1,18 @@
-import { TeamPlayerScoreModel } from "src/app/services/models/teamplayercore.model";
+import {
+  TeamPlayerScoreBatsmanModel,
+  TeamPlayerScoreBowlerModel
+} from "src/app/services/models/teamplayercore.model";
 
 export class AddScorecard {
   static readonly type = "[PLAPER SCORE] Add";
 
-  constructor(public payload: TeamPlayerScoreModel) {}
+  constructor(public payload: TeamPlayerScoreBatsmanModel) {}
+}
+
+export class AddBowlerScorecard {
+  static readonly type = "[PLAPER SCORE] Add bowler";
+
+  constructor(public payload: TeamPlayerScoreBowlerModel) {}
 }
 
 export class GetScorecards {
@@ -13,11 +22,11 @@ export class GetScorecards {
 export class SetSelectedScorecard {
   static readonly type = "[PLAPER SCORE] Set";
 
-  constructor(public payload: TeamPlayerScoreModel) {}
+  constructor(public payload: TeamPlayerScoreBatsmanModel) {}
 }
 
 export class AddScorecardPlayerScore {
   static readonly type = "[PLAPER SCORE] Add";
 
-  constructor(public payload: TeamPlayerScoreModel) {}
+  constructor(public payload: TeamPlayerScoreBatsmanModel) {}
 }

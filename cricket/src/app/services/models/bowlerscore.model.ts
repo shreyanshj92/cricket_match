@@ -1,6 +1,7 @@
 export interface BowlerScoreModel {
   name: string;
-  over: string;
+  run: number;
+  over: number;
   wicket: number;
-  economy: string;
+  economyRate: string;
 }

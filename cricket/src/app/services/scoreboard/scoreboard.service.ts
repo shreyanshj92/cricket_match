@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { TeamPlayerScoreModel } from "../models/teamplayercore.model";
+import { TeamPlayerScoreBatsmanModel } from "../models/teamplayercore.model";
 
 @Injectable({
   providedIn: "root"
@@ -8,19 +8,19 @@ import { TeamPlayerScoreModel } from "../models/teamplayercore.model";
 export class ScoreboardService {
   constructor(private http: HttpClient) {}
   fetchTeamPlayerScore() {
-    return this.http.get<TeamPlayerScoreModel[]>(
+    return this.http.get<TeamPlayerScoreBatsmanModel[]>(
       `http://localhost:3000/teamPlayerScore`
     );
   }
 
-  addTeamPlayerScore(payload: TeamPlayerScoreModel) {
-    return this.http.post<TeamPlayerScoreModel>(
+  addTeamPlayerScore(payload: TeamPlayerScoreBatsmanModel) {
+    return this.http.post<TeamPlayerScoreBatsmanModel>(
       `http://localhost:3000/teamPlayerScore`,
       payload
     );
   }
-  updateQuestion(payload: TeamPlayerScoreModel, teamName: number) {
-    return this.http.put<TeamPlayerScoreModel>(
+  updateQuestion(payload: TeamPlayerScoreBatsmanModel, teamName: number) {
+    return this.http.put<TeamPlayerScoreBatsmanModel>(
       `http://localhost:3000/teamPlayerScore/${teamName}`,
       payload
     );

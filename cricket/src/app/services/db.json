@@ -1,5 +1,5 @@
 {
-  "questions": [
+  "questionsTeam1": [
     {
       "id": 1,
       "question": "आप का नाम क्या है?",
@@ -79,440 +79,84 @@
       "offeredRun": 3
     }
   ],
-  "teamDetails": [
+  "questionsTeam2": [
     {
-      "teamName": "ABC",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "a",
-          "lastName": "a",
-          "role": "AllRounder"
-        },
-        {
-          "id": 2,
-          "firstName": "b",
-          "lastName": "b",
-          "role": "Batsman"
-        },
-        {
-          "id": 3,
-          "firstName": "c",
-          "lastName": "c",
-          "role": "Captain"
-        },
-        {
-          "id": 4,
-          "firstName": "d",
-          "lastName": "d",
-          "role": "Batsman"
-        },
-        {
-          "id": 5,
-          "firstName": "e",
-          "lastName": "e",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "e",
-          "lastName": "e",
-          "role": "Bowler"
-        }
-      ],
-      "id": 1
+      "id": 1,
+      "question": "आप का नाम क्या है?",
+      "answer": "श्रेयांश जैन",
+      "offeredRun": 4
     },
     {
-      "teamName": "XYZ",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "f",
-          "lastName": "f",
-          "role": "AllRounder"
-        },
-        {
-          "id": 2,
-          "firstName": "g",
-          "lastName": "g",
-          "role": "Batsman"
-        },
-        {
-          "id": 3,
-          "firstName": "h",
-          "lastName": "h",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "i",
-          "lastName": "i",
-          "role": "Bowler"
-        },
-        {
-          "id": 5,
-          "firstName": "j",
-          "lastName": "j",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "k",
-          "lastName": "k",
-          "role": "Captain"
-        }
-      ],
-      "id": 2
+      "id": 2,
+      "question": "आप क्या पसंद करते है?",
+      "answer": "Cricket, chess, movie",
+      "offeredRun": 2
     },
     {
-      "teamName": "A1",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "lkm",
-          "lastName": "lkm",
-          "role": "AllRounder"
-        },
-        {
-          "id": 2,
-          "firstName": "lkm",
-          "lastName": " l",
-          "role": "Batsman"
-        },
-        {
-          "id": 3,
-          "firstName": "kn",
-          "lastName": "jkn",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "'n",
-          "lastName": "lkn",
-          "role": "Bowler"
-        },
-        {
-          "id": 5,
-          "firstName": "klnl",
-          "lastName": "nlk",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "klnln",
-          "lastName": "lnknk",
-          "role": "Captain"
-        }
-      ],
-      "id": 3
+      "id": 3,
+      "question": "आपकी कंपनी का नाम क्या है?",
+      "answer": "Mindtree",
+      "offeredRun": 1
     },
     {
-      "teamName": "A1",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "lkm",
-          "lastName": "lkm",
-          "role": "AllRounder"
-        },
-        {
-          "id": 2,
-          "firstName": "lkm",
-          "lastName": " l",
-          "role": "Batsman"
-        },
-        {
-          "id": 3,
-          "firstName": "kn",
-          "lastName": "jkn",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "'n",
-          "lastName": "lkn",
-          "role": "Bowler"
-        },
-        {
-          "id": 5,
-          "firstName": "klnl",
-          "lastName": "nlk",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "klnln",
-          "lastName": "lnknk",
-          "role": "Captain"
-        }
-      ],
-      "id": 4
+      "id": 4,
+      "question": "ऑफिस जाने के लिए अपना रास्ता बताएं",
+      "answer": "phase 1",
+      "offeredRun": 6
     },
     {
-      "teamName": "A2",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "lkn",
-          "lastName": "lnklkn",
-          "role": "Captain"
-        },
-        {
-          "id": 2,
-          "firstName": "lknlkn",
-          "lastName": "lknk",
-          "role": "Batsman"
-        },
-        {
-          "id": 3,
-          "firstName": "lkn",
-          "lastName": "lnk",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "nlm",
-          "lastName": "kln",
-          "role": "Bowler"
-        },
-        {
-          "id": 5,
-          "firstName": "lnlkn",
-          "lastName": "lkn",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "poj",
-          "lastName": "ljkm",
-          "role": "AllRounder"
-        }
-      ],
-      "id": 5
+      "id": 5,
+      "question": "तुम्हारी उम्र क्या है",
+      "answer": "27",
+      "offeredRun": 1
     },
     {
-      "teamName": "A3",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "bk",
-          "lastName": "mn ",
-          "role": "Batsman"
-        },
-        {
-          "id": 2,
-          "firstName": "kln",
-          "lastName": "kn",
-          "role": "AllRounder"
-        },
-        {
-          "id": 3,
-          "firstName": "k jk",
-          "lastName": "jn",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "lnk",
-          "lastName": "lnk",
-          "role": "Bowler"
-        },
-        {
-          "id": 5,
-          "firstName": "knlkn",
-          "lastName": "lkn",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "knkln",
-          "lastName": "lknc",
-          "role": "Captain"
-        }
-      ],
-      "id": 6
+      "id": 6,
+      "question": "अपने पदनाम",
+      "answer": "Module lead",
+      "offeredRun": 3
     },
     {
-      "teamName": "A3",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "bk",
-          "lastName": "mn ",
-          "role": "Batsman"
-        },
-        {
-          "id": 2,
-          "firstName": "kln",
-          "lastName": "kn",
-          "role": "AllRounder"
-        },
-        {
-          "id": 3,
-          "firstName": "k jk",
-          "lastName": "jn",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "lnk",
-          "lastName": "lnk",
-          "role": "Bowler"
-        },
-        {
-          "id": 5,
-          "firstName": "knlkn",
-          "lastName": "lkn",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "knkln",
-          "lastName": "lknc",
-          "role": "Captain"
-        }
-      ],
-      "id": 7
+      "id": 7,
+      "question": "Whats your age?",
+      "answer": "27",
+      "offeredRun": 1
     },
     {
-      "teamName": "A4",
-      "teamplayer": [
-        {
-          "id": 1,
-          "firstName": "lnkn",
-          "lastName": "lnk",
-          "role": "Captain"
-        },
-        {
-          "id": 2,
-          "firstName": "lknkn",
-          "lastName": "lnk",
-          "role": "AllRounder"
-        },
-        {
-          "id": 3,
-          "firstName": "lknlkn",
-          "lastName": "lnk",
-          "role": "Batsman"
-        },
-        {
-          "id": 4,
-          "firstName": "kjn",
-          "lastName": "lkn",
-          "role": "Batsman"
-        },
-        {
-          "id": 5,
-          "firstName": "kjnl",
-          "lastName": "nln",
-          "role": "Bowler"
-        },
-        {
-          "id": 6,
-          "firstName": "klnkn",
-          "lastName": "kln",
-          "role": "Bowler"
-        }
-      ],
-      "id": 8
-    }
-  ],
-  "teamPlayerScore": [
-    {
-      "teamName": "XYZ",
-      "playerScore": {
-        "name": "f",
-        "run": 4,
-        "ball": 3,
-        "four": 0,
-        "six": 0,
-        "strikeRate": "133"
-      },
-      "id": 1
+      "id": 8,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
     },
     {
-      "teamName": "XYZ",
-      "playerScore": {
-        "name": "f",
-        "run": 6,
-        "ball": 3,
-        "four": 0,
-        "six": 1,
-        "strikeRate": "200"
-      },
-      "id": 2
+      "id": 9,
+      "question": "क्रोध",
+      "answer": "Bowled",
+      "offeredRun": 0
     },
     {
-      "teamName": "XYZ",
-      "playerScore": {
-        "name": "f",
-        "run": 0,
-        "ball": 1,
-        "four": 0,
-        "six": 0,
-        "strikeRate": ""
-      },
-      "id": 3
+      "id": 10,
+      "question": "सम्यक ज्ञान",
+      "answer": "Wide ball",
+      "offeredRun": 1
     },
     {
-      "teamName": "A2",
-      "playerScore": {
-        "name": "lkn",
-        "run": 1,
-        "ball": 2,
-        "four": 0,
-        "six": 0,
-        "strikeRate": "50"
-      },
-      "id": 4
+      "id": 11,
+      "question": "सम्यक चारित्र",
+      "answer": "No ball",
+      "offeredRun": 1
     },
     {
-      "teamName": "A2",
-      "playerScore": {
-        "name": "lkn",
-        "run": 0,
-        "ball": 1,
-        "four": 0,
-        "six": 0,
-        "strikeRate": ""
-      },
-      "id": 5
+      "id": 14,
+      "question": "lknl",
+      "answer": "nln",
+      "offeredRun": 2
     },
     {
-      "teamName": "A4",
-      "playerScore": {
-        "name": "lnkn",
-        "run": 5,
-        "ball": 3,
-        "four": 1,
-        "six": 0,
-        "strikeRate": "167"
-      },
-      "id": 6
-    },
-    {
-      "teamName": "A4",
-      "playerScore": {
-        "name": "lknkn",
-        "run": 0,
-        "ball": 1,
-        "four": 0,
-        "six": 0,
-        "strikeRate": ""
-      },
-      "id": 7
-    },
-    {
-      "teamName": "A4",
-      "playerScore": {
-        "name": "lknlkn",
-        "run": 2,
-        "ball": 2,
-        "four": 0,
-        "six": 0,
-        "strikeRate": "100"
-      },
-      "id": 8
+      "id": 16,
+      "question": "KBK",
+      "answer": " ,LNK",
+      "offeredRun": 3
     }
   ],
   "cricket_question": [
@@ -1038,5 +682,224 @@
       "answer": "12",
       "offeredRun": 4
     }
-  ]
+  ],
+  "teamBowlerScore": [],
+  "teamDetails": [
+    {
+      "teamName": "ABC",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "a",
+          "lastName": "a",
+          "role": "AllRounder"
+        },
+        {
+          "id": 2,
+          "firstName": "b",
+          "lastName": "b",
+          "role": "Batsman"
+        },
+        {
+          "id": 3,
+          "firstName": "c",
+          "lastName": "c",
+          "role": "Captain"
+        },
+        {
+          "id": 4,
+          "firstName": "d",
+          "lastName": "d",
+          "role": "Batsman"
+        },
+        {
+          "id": 5,
+          "firstName": "e",
+          "lastName": "e",
+          "role": "Bowler"
+        },
+        {
+          "id": 6,
+          "firstName": "f",
+          "lastName": "f",
+          "role": "Bowler"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "teamName": "ABC",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "a",
+          "lastName": "a",
+          "role": "AllRounder"
+        },
+        {
+          "id": 2,
+          "firstName": "b",
+          "lastName": "b",
+          "role": "Batsman"
+        },
+        {
+          "id": 3,
+          "firstName": "c",
+          "lastName": "c",
+          "role": "Captain"
+        },
+        {
+          "id": 4,
+          "firstName": "d",
+          "lastName": "d",
+          "role": "Batsman"
+        },
+        {
+          "id": 5,
+          "firstName": "e",
+          "lastName": "e",
+          "role": "Bowler"
+        },
+        {
+          "id": 6,
+          "firstName": "f",
+          "lastName": "f",
+          "role": "Bowler"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "teamName": "XYZ",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "u",
+          "lastName": "u",
+          "role": "Batsman"
+        },
+        {
+          "id": 2,
+          "firstName": "v",
+          "lastName": "v",
+          "role": "Batsman"
+        },
+        {
+          "id": 3,
+          "firstName": "w",
+          "lastName": "w",
+          "role": "Bowler"
+        },
+        {
+          "id": 4,
+          "firstName": "x",
+          "lastName": "x",
+          "role": "Bowler"
+        },
+        {
+          "id": 5,
+          "firstName": "y",
+          "lastName": "y",
+          "role": "AllRounder"
+        },
+        {
+          "id": 6,
+          "firstName": "z",
+          "lastName": "z",
+          "role": "Captain"
+        }
+      ],
+      "id": 3
+    }
+  ],
+  "teamBatsmanScore": [
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "a",
+        "run": 2,
+        "ball": 2,
+        "four": 0,
+        "six": 0,
+        "strikeRate": "100"
+      },
+      "id": 1
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "b",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 2
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "c",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 3
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "d",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 4
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "e",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 5
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "f",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 6
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "f",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 7
+    }
+  ],
+  "teamScore": []
 }

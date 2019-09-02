@@ -20,14 +20,15 @@ import {
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA
 } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TeamState } from "./+state/teamformation/teamformation.state";
 import { ScoreCardState } from "./+state/scoreboard/scoreboard.state";
 import { environment } from "src/environments/environment";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { DashboardRoutingModule } from "./dashboard/dashboard-routing.module";
 import { ScorecartComponent } from "./scorecart/scorecart.component";
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 
@@ -41,13 +42,11 @@ import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
     QuestionsComponent,
     UpdateQuestionsComponent,
     QuestionListComponent,
-    DashboardComponent,
     ScorecartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardRoutingModule,
     ReactiveFormsModule,
     NgxsModule.forRoot([QuestionState, TeamState, ScoreCardState], {
       developmentMode: !environment.production
@@ -61,9 +60,13 @@ import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
     MatSortModule,
     MatTableModule,
     SweetAlert2Module.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -3,5 +3,6 @@ import { TeamPlayerModel } from "./teamplayer.model";
 
 export interface TeamFormationModel {
   teamName: string;
+  teamSize: number;
   teamplayer: TeamPlayerModel[];
 }

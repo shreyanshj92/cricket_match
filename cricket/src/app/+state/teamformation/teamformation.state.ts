@@ -1,11 +1,19 @@
 import { State, Action, StateContext, Selector } from "@ngxs/store";
-import { AddTeam, GetTeams, SetSelectedTeam } from "./teamformation.actions";
+import {
+  AddTeam,
+  GetTeams,
+  SetSelectedTeam,
+  GetTeamScore,
+  AddTeamScore
+} from "./teamformation.actions";
 import { TeamformationService } from "../../services/teamformation/teamformation.service";
 import { tap } from "rxjs/operators";
 import { TeamFormationModel } from "src/app/services/models/teamformation.model";
+import { TeamScoreModel } from "src/app/services/models/teamScore.model";
 
 export class TeamStateModel {
   teams: TeamFormationModel[];
+  teamScore: TeamScoreModel[];
   selectedTeam: TeamFormationModel;
 }
 
@@ -13,6 +21,7 @@ export class TeamStateModel {
   name: "teams",
   defaults: {
     teams: [],
+    teamScore: null,
     selectedTeam: null
   }
 })
@@ -42,6 +51,19 @@ export class TeamState {
     );
   }
 
+  @Action(GetTeamScore)
+  getTeamScore({ getState, setState }: StateContext<TeamStateModel>) {
+    return this.teamformationService.fetchTeamScore().pipe(
+      tap(result => {
+        const state = getState();
+        setState({
+          ...state,
+          teamScore: result
+        });
+      })
+    );
+  }
+
   @Action(AddTeam)
   addTeam(
     { getState, patchState }: StateContext<TeamStateModel>,
@@ -57,13 +79,27 @@ export class TeamState {
     );
   }
 
+  @Action(AddTeamScore)
+  addTeamScore(
+    { getState, patchState }: StateContext<TeamStateModel>,
+    { teamScore }: AddTeamScore
+  ) {
+    return this.teamformationService.addTeamScore(teamScore).pipe(
+      tap(result => {
+        const state = getState();
+        patchState({
+          teamScore: [...state.teamScore, result]
+        });
+      })
+    );
+  }
+
   @Action(SetSelectedTeam)
   setSelectedTeamId(
     { getState, setState }: StateContext<TeamStateModel>,
     { payload }: SetSelectedTeam
   ) {
     const state = getState();
-    console.log(state);
     setState({
       ...state,
       selectedTeam: payload

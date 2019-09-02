@@ -105,7 +105,6 @@ export class QuestionState {
     { payload }: SetSelectedQuestion
   ) {
     const state = getState();
-    console.log(state);
     setState({
       ...state,
       selectedQuestion: payload

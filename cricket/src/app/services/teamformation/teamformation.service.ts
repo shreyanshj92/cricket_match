@@ -1,3 +1,4 @@
+import { TeamScoreModel } from "./../models/teamScore.model";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { TeamFormationModel } from "../models/teamformation.model";
@@ -17,6 +18,17 @@ export class TeamformationService {
   addTeam(payload: TeamFormationModel) {
     return this.http.post<TeamFormationModel>(
       `http://localhost:3000/teamDetails`,
+      payload
+    );
+  }
+
+  fetchTeamScore() {
+    return this.http.get<TeamScoreModel[]>(`http://localhost:3000/teamScore`);
+  }
+
+  addTeamScore(payload: TeamScoreModel) {
+    return this.http.post<TeamScoreModel>(
+      `http://localhost:3000/teamScore`,
       payload
     );
   }

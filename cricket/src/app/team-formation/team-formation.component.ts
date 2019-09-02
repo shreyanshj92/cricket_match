@@ -12,6 +12,7 @@ import { Store } from "@ngxs/store";
 import { TeamformationService } from "../services/teamformation/teamformation.service";
 import { TeamPlayerModel } from "../services/models/teamplayer.model";
 import { TeamState } from "../+state/teamformation/teamformation.state";
+import { AppSettings } from "../Static/constants/appsetting";
 
 @Component({
   selector: "app-team-formation",
@@ -19,7 +20,8 @@ import { TeamState } from "../+state/teamformation/teamformation.state";
   styleUrls: ["./team-formation.component.scss"]
 })
 export class TeamFormationComponent implements OnInit {
-  teamName = new FormControl("");
+  addTeamNameForm: FormGroup;
+  // teamName = new FormControl("");
   addPlayerForm: FormGroup;
   playersTeamA = [];
   playersTeamB = [];
@@ -32,12 +34,17 @@ export class TeamFormationComponent implements OnInit {
     lastName: "",
     role: ""
   };
+  bowlerCount: number;
+  batsmanCount: number;
+  playerCount: number;
 
   teamAName: string;
   teamBName: string;
   selectedTeamName: string;
   teamAAddFlag = true;
   teamBAddFlag = true;
+  submitted: boolean;
+  isDisplayPlayerDropdown: boolean;
 
   count = 0;
   teamAPlayerCount = 1;
@@ -52,12 +59,39 @@ export class TeamFormationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.addTeamNameForm = this.fb.group({
+      teamName: this.fb.control("", [Validators.required])
+    });
     this.addPlayerForm = this.fb.group({
       firstName: this.fb.control("", [Validators.required]),
       lastName: this.fb.control("", [Validators.required]),
       role: this.fb.control("", [Validators.required]),
       selectedTeam: this.fb.control("", [Validators.required])
     });
+  }
+  onSubmit() {
+    this.submitted = true;
+    if (this.addTeamNameForm.invalid) {
+      return;
+    }
+    this.addTeamName();
+  }
+  addPlayerFormSubmit() {
+    if (this.addPlayerForm.invalid) {
+      return;
+    }
+  }
+
+  updatePlayerCount(event: any) {
+    this.playerCount = Number(event.target.value);
+    if (this.playerCount === 6) {
+      this.bowlerCount = AppSettings.BOWLERCOUNTFORSIX;
+      this.batsmanCount = AppSettings.BATSMANCOUNTFORSIX;
+    } else {
+      this.bowlerCount = AppSettings.BOWLERCOUNTFORELEVEN;
+      this.batsmanCount = AppSettings.BATSMANCOUNTFORELEVEN;
+    }
+    this.isDisplayPlayerDropdown = true;
   }
 
   updateTeamName(event: any): void {
@@ -69,22 +103,22 @@ export class TeamFormationComponent implements OnInit {
       this.roles = this.teamBRoles;
     }
   }
-  addTeamName(value: string): void {
+  addTeamName(): void {
     if (this.count === 0) {
-      this.teamAName = value.toUpperCase();
+      this.teamAName = this.addTeamNameForm.controls.teamName.value.toUpperCase();
       this.count++;
     } else if (this.count === 1) {
-      this.teamBName = value.toUpperCase();
+      this.teamBName = this.addTeamNameForm.controls.teamName.value.toUpperCase();
       this.count++;
     } else {
       return;
     }
-    this.teamName.setValue("");
+    this.addTeamNameForm.controls.teamName.setValue("");
   }
   addPlayer(): void {
     if (
       this.addPlayerForm.value.selectedTeam === "teamA" &&
-      this.playersTeamA.length < 6
+      this.playersTeamA.length < this.playerCount
     ) {
       this.playerProp = {
         id: this.teamAPlayerCount,
@@ -97,7 +131,7 @@ export class TeamFormationComponent implements OnInit {
       this.teamAPlayerCount++;
     } else if (
       this.addPlayerForm.value.selectedTeam === "teamB" &&
-      this.playersTeamB.length < 6
+      this.playersTeamB.length < this.playerCount
     ) {
       this.playerProp = {
         id: this.teamBPlayerCount,
@@ -112,19 +146,21 @@ export class TeamFormationComponent implements OnInit {
     this.addPlayerForm.controls.firstName.setValue("");
     this.addPlayerForm.controls.lastName.setValue("");
     this.addPlayerForm.controls.role.setValue("");
-    this.teamName.setValue("");
-    if (this.count >= 2 && this.playersTeamA.length > 5 && this.teamAAddFlag) {
+    this.addPlayerForm.controls.selectedTeam.setValue("");
+    if (
+      this.count >= 2 &&
+      this.playersTeamA.length > this.playerCount - 1 &&
+      this.teamAAddFlag
+    ) {
       this.addTeamDetails(this.playersTeamA, this.teamAName);
     }
-    if (this.count >= 2 && this.playersTeamB.length > 5 && this.teamBAddFlag) {
+    if (
+      this.count >= 2 &&
+      this.playersTeamB.length > this.playerCount - 1 &&
+      this.teamBAddFlag
+    ) {
       this.addTeamDetails(this.playersTeamB, this.teamBName);
     }
-  }
-  cancelPlayer(): void {
-    this.addPlayerForm.controls.firstName.setValue("");
-    this.addPlayerForm.controls.lastName.setValue("");
-    this.addPlayerForm.controls.role.setValue("");
-    this.teamName.setValue("");
   }
 
   playerCountChecking(playerList: any): any {
@@ -138,7 +174,7 @@ export class TeamFormationComponent implements OnInit {
       }
     });
     playerList.forEach(player => {
-      if (player.role === "Batsman" && batsmanCount === 2) {
+      if (player.role === "Batsman" && batsmanCount === this.batsmanCount) {
         if (this.selectedTeamName === "teamA") {
           this.roles = this.arrayRemove(this.teamARoles, player.role);
           this.teamARoles = this.roles;
@@ -147,7 +183,7 @@ export class TeamFormationComponent implements OnInit {
           this.teamBRoles = this.roles;
         }
       }
-      if (player.role === "Bowler" && bowlerCount === 2) {
+      if (player.role === "Bowler" && bowlerCount === this.bowlerCount) {
         if (this.selectedTeamName === "teamA") {
           this.roles = this.arrayRemove(this.teamARoles, player.role);
           this.teamARoles = this.roles;
@@ -185,8 +221,10 @@ export class TeamFormationComponent implements OnInit {
   addTeamDetails(playerList: TeamPlayerModel[], teamname: string) {
     const teamDetails = {
       teamName: teamname,
+      teamSize: this.playerCount,
       teamplayer: playerList
     };
+    console.log("teamDetails", teamDetails);
     this.store.dispatch(new AddTeam(teamDetails));
     // const teamDetailsResponse = this.store.selectSnapshot(
     //   TeamState.getTeamList

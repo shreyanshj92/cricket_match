@@ -31,7 +31,6 @@ export class QuestionListComponent implements OnInit {
   }
 
   editQuestion(payload: QuestionModel) {
-    console.log(payload);
     this.store.dispatch(new SetSelectedQuestion(payload));
   }
 }
