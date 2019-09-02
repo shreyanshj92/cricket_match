@@ -14,15 +14,23 @@ import { NgxsModule } from "@ngxs/store";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { HttpClientModule } from "@angular/common/http";
-import { QuestionState } from "./+state/cricket.state";
+import { QuestionState } from "./+state/question.state";
 import {
   MatInputModule,
   MatPaginatorModule,
   MatProgressSpinnerModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA
 } from "@angular/material";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { TeamState } from "./+state/teamformation/teamformation.state";
+import { ScoreCardState } from "./+state/scoreboard/scoreboard.state";
+import { environment } from "src/environments/environment";
+import { ScorecartComponent } from "./scorecart/scorecart.component";
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
   declarations: [
@@ -33,13 +41,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RulesComponent,
     QuestionsComponent,
     UpdateQuestionsComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    ScorecartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgxsModule.forRoot([QuestionState]),
+    NgxsModule.forRoot([QuestionState, TeamState, ScoreCardState], {
+      developmentMode: !environment.production
+    }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     HttpClientModule,
@@ -48,9 +59,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatProgressSpinnerModule,
     MatSortModule,
     MatTableModule,
-    BrowserAnimationsModule
+    SweetAlert2Module.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

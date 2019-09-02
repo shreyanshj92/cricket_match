@@ -1,5 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ScoreCardService } from "../services/score-card.service";
+import { Store, Select } from "@ngxs/store";
+import Swal from "sweetalert2";
+import { MatDialog } from "@angular/material/dialog";
+import { ScorecartComponent } from "../scorecart/scorecart.component";
+import { TeamState } from "../+state/teamformation/teamformation.state";
 
 @Component({
   selector: "app-scoreboard",
@@ -9,27 +15,97 @@ import { ScoreCardService } from "../services/score-card.service";
 export class ScoreboardComponent implements OnInit {
   freeHitballFlag: boolean;
   scoreCard: any;
-  teamDetail: any;
-  displayBatsman: string;
+  displayBatsman: any;
   displayBowler: string;
-  constructor(private scoreCardService: ScoreCardService) {}
+  firstInningScore: string;
+  teamWonToss: any;
+  tossWinnerTeam: any;
+  teamScoreBoardObj: any;
+  playerDetails: any;
+  teamDetails: any;
+  teamSize: number;
+  playerDetail = [];
+  teams = [];
+
+  constructor(
+    private scoreCardService: ScoreCardService,
+    private route: ActivatedRoute,
+    private store: Store,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit() {
+    this.route.params.subscribe((params: any) => {
+      if ("team" in params) {
+        this.teamWonToss = params.team;
+        this.scoreCardService.addTeamDetails(this.teamWonToss);
+      }
+    });
     this.scoreCard = this.scoreCardService.getScore();
-    this.getTeamDetails();
+    this.playerDetails = this.scoreCardService.getPlayerScore();
+    this.teamDetails = this.store.selectSnapshot(TeamState.getTeamList);
+    this.teamDetails.forEach(element => {
+      this.teams.push(element.teamName);
+      this.teamSize = element.teamSize;
+    });
+    this.teams = [...new Set(this.teams)];
+
+    if (this.scoreCard.totalWicket === 6) {
+      this.firstInningScore = this.scoreCard.totalRun;
+    } else if (this.calOverCount()) {
+      this.firstInningScore = `${this.scoreCard.totalRun}/${this.scoreCard.totalWicket}`;
+    }
+    this.playerDetail.push(this.playerDetails);
   }
+
+  getPlayerScore(): string {
+    return (
+      this.playerDetails.playerScore.name +
+      `: ${this.playerDetails.playerScore.run}(${this.playerDetails.playerScore.ball})`
+    );
+  }
+
   calRunRate(): string {
-    return this.scoreCardService.calRunRate();
+    return ((this.scoreCard.totalRun * 6) / this.scoreCard.totalBall).toFixed(
+      1
+    );
   }
+
   calOverCount(): string {
-    return this.scoreCardService.calOverCount();
+    const overCount = this.scoreCardService.calOverCount();
+    if (overCount.toLowerCase() !== "inning end") {
+      return overCount;
+    } else {
+      this.firstInnigscore(overCount);
+      return;
+    }
   }
-  getTeamDetails() {
-    this.teamDetail = this.scoreCardService.getTeamDetail();
-    // if (this.teamDetail) {
-    //   this.displayBatsman = this.teamDetail.teamA.playerList.firstName;
-    //   this.displayBowler = this.teamDetail.teamB.playerList.firstName;
-    // }
-    console.log("this.teamDetail", this.teamDetail);
+
+  firstInnigscore(overCount) {
+    Swal.fire({
+      title: "Team score",
+      text: `${this.scoreCard.run}/${this.scoreCard.wicket}
+      Over: ${overCount}`,
+      showCloseButton: true,
+      showConfirmButton: false
+    }).then(() => {
+      console.log("Change inning");
+    });
+  }
+
+  displayScoreboard() {
+    Swal.fire({
+      title: "Scoreboard",
+      width: 800,
+      showCloseButton: true,
+      showConfirmButton: false
+    });
+  }
+
+  openDialog(): void {
+    this.dialog.open(ScorecartComponent, {
+      width: "667px",
+      data: { playerDetails: this.playerDetail }
+    });
   }
 }

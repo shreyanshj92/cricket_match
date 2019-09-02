@@ -6,9 +6,9 @@ import {
   GetQuestions,
   SetSelectedQuestion,
   UpdateQuestion
-} from "./cricket.actions";
-import { ScoreCardService } from "../services/score-card.service";
+} from "./question.actions";
 import { tap } from "rxjs/operators";
+import { QuestionUpdateService } from "../services/question-update/question-update.service";
 
 export class QuestionStateModel {
   questions: QuestionModel[];
@@ -23,7 +23,7 @@ export class QuestionStateModel {
   }
 })
 export class QuestionState {
-  constructor(private scoreCardService: ScoreCardService) {}
+  constructor(private questionUpdateService: QuestionUpdateService) {}
 
   @Selector()
   static getQuestionList(state: QuestionStateModel) {
@@ -37,7 +37,7 @@ export class QuestionState {
 
   @Action(GetQuestions)
   geQuestions({ getState, setState }: StateContext<QuestionStateModel>) {
-    return this.scoreCardService.fetchQuestions().pipe(
+    return this.questionUpdateService.fetchQuestions().pipe(
       tap(result => {
         const state = getState();
         setState({
@@ -53,7 +53,7 @@ export class QuestionState {
     { getState, patchState }: StateContext<QuestionStateModel>,
     { payload }: AddQuestion
   ) {
-    return this.scoreCardService.addQuestion(payload).pipe(
+    return this.questionUpdateService.addQuestion(payload).pipe(
       tap(result => {
         const state = getState();
         patchState({
@@ -68,7 +68,7 @@ export class QuestionState {
     { getState, setState }: StateContext<QuestionStateModel>,
     { payload, id }: UpdateQuestion
   ) {
-    return this.scoreCardService.updateQuestion(payload, id).pipe(
+    return this.questionUpdateService.updateQuestion(payload, id).pipe(
       tap(result => {
         const state = getState();
         const questionList = [...state.questions];
@@ -87,7 +87,7 @@ export class QuestionState {
     { getState, setState }: StateContext<QuestionStateModel>,
     { id }: DeleteQuestion
   ) {
-    return this.scoreCardService.deleteQuestion(id).pipe(
+    return this.questionUpdateService.deleteQuestion(id).pipe(
       tap(() => {
         const state = getState();
         const filteredArray = state.questions.filter(item => item.id !== id);
@@ -105,7 +105,6 @@ export class QuestionState {
     { payload }: SetSelectedQuestion
   ) {
     const state = getState();
-    console.log(state);
     setState({
       ...state,
       selectedQuestion: payload

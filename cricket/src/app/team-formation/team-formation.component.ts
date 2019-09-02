@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import {
   FormControl,
@@ -6,6 +7,12 @@ import {
   FormBuilder
 } from "@angular/forms";
 import { ScoreCardService } from "../services/score-card.service";
+import { AddTeam } from "../+state/teamformation/teamformation.actions";
+import { Store } from "@ngxs/store";
+import { TeamformationService } from "../services/teamformation/teamformation.service";
+import { TeamPlayerModel } from "../services/models/teamplayer.model";
+import { TeamState } from "../+state/teamformation/teamformation.state";
+import { AppSettings } from "../Static/constants/appsetting";
 
 @Component({
   selector: "app-team-formation",
@@ -13,7 +20,8 @@ import { ScoreCardService } from "../services/score-card.service";
   styleUrls: ["./team-formation.component.scss"]
 })
 export class TeamFormationComponent implements OnInit {
-  teamName = new FormControl("");
+  addTeamNameForm: FormGroup;
+  // teamName = new FormControl("");
   addPlayerForm: FormGroup;
   playersTeamA = [];
   playersTeamB = [];
@@ -26,26 +34,64 @@ export class TeamFormationComponent implements OnInit {
     lastName: "",
     role: ""
   };
+  bowlerCount: number;
+  batsmanCount: number;
+  playerCount: number;
 
   teamAName: string;
   teamBName: string;
   selectedTeamName: string;
+  teamAAddFlag = true;
+  teamBAddFlag = true;
+  submitted: boolean;
+  isDisplayPlayerDropdown: boolean;
 
   count = 0;
   teamAPlayerCount = 1;
   teamBPlayerCount = 1;
   constructor(
     private fb: FormBuilder,
-    private scoreCardService: ScoreCardService
+    private scoreCardService: ScoreCardService,
+    private store: Store,
+    private teamformationService: TeamformationService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.addTeamNameForm = this.fb.group({
+      teamName: this.fb.control("", [Validators.required])
+    });
     this.addPlayerForm = this.fb.group({
       firstName: this.fb.control("", [Validators.required]),
       lastName: this.fb.control("", [Validators.required]),
       role: this.fb.control("", [Validators.required]),
       selectedTeam: this.fb.control("", [Validators.required])
     });
+  }
+  onSubmit() {
+    this.submitted = true;
+    if (this.addTeamNameForm.invalid) {
+      return;
+    }
+    this.addTeamName();
+  }
+  addPlayerFormSubmit() {
+    if (this.addPlayerForm.invalid) {
+      return;
+    }
+  }
+
+  updatePlayerCount(event: any) {
+    this.playerCount = Number(event.target.value);
+    if (this.playerCount === 6) {
+      this.bowlerCount = AppSettings.BOWLERCOUNTFORSIX;
+      this.batsmanCount = AppSettings.BATSMANCOUNTFORSIX;
+    } else {
+      this.bowlerCount = AppSettings.BOWLERCOUNTFORELEVEN;
+      this.batsmanCount = AppSettings.BATSMANCOUNTFORELEVEN;
+    }
+    this.isDisplayPlayerDropdown = true;
   }
 
   updateTeamName(event: any): void {
@@ -57,62 +103,69 @@ export class TeamFormationComponent implements OnInit {
       this.roles = this.teamBRoles;
     }
   }
-  addTeamName(value: string): void {
+  addTeamName(): void {
     if (this.count === 0) {
-      this.teamAName = value.toUpperCase();
+      this.teamAName = this.addTeamNameForm.controls.teamName.value.toUpperCase();
       this.count++;
     } else if (this.count === 1) {
-      this.teamBName = value.toUpperCase();
+      this.teamBName = this.addTeamNameForm.controls.teamName.value.toUpperCase();
       this.count++;
     } else {
       return;
     }
-    this.teamName.setValue("");
+    this.addTeamNameForm.controls.teamName.setValue("");
   }
   addPlayer(): void {
     if (
       this.addPlayerForm.value.selectedTeam === "teamA" &&
-      this.playersTeamA.length < 6
+      this.playersTeamA.length < this.playerCount
     ) {
       this.playerProp = {
         id: this.teamAPlayerCount,
-        firstName: this.addPlayerForm.controls["firstName"].value,
-        lastName: this.addPlayerForm.controls["lastName"].value,
-        role: this.addPlayerForm.controls["role"].value
+        firstName: this.addPlayerForm.controls.firstName.value,
+        lastName: this.addPlayerForm.controls.lastName.value,
+        role: this.addPlayerForm.controls.role.value
       };
       this.playersTeamA.push(this.playerProp);
       this.playerCountChecking(this.playersTeamA);
       this.teamAPlayerCount++;
     } else if (
       this.addPlayerForm.value.selectedTeam === "teamB" &&
-      this.playersTeamB.length < 6
+      this.playersTeamB.length < this.playerCount
     ) {
       this.playerProp = {
         id: this.teamBPlayerCount,
-        firstName: this.addPlayerForm.controls["firstName"].value,
-        lastName: this.addPlayerForm.controls["lastName"].value,
-        role: this.addPlayerForm.controls["role"].value
+        firstName: this.addPlayerForm.controls.firstName.value,
+        lastName: this.addPlayerForm.controls.lastName.value,
+        role: this.addPlayerForm.controls.role.value
       };
       this.playersTeamB.push(this.playerProp);
       this.playerCountChecking(this.playersTeamB);
       this.teamBPlayerCount++;
     }
-    this.addPlayerForm.controls["firstName"].setValue("");
-    this.addPlayerForm.controls["lastName"].setValue("");
-    this.addPlayerForm.controls["role"].setValue("");
-    this.teamName.setValue("");
-  }
-  editPlayer(): void {}
-  cancelPlayer(): void {
-    this.addPlayerForm.controls["firstName"].setValue("");
-    this.addPlayerForm.controls["lastName"].setValue("");
-    this.addPlayerForm.controls["role"].setValue("");
-    this.teamName.setValue("");
+    this.addPlayerForm.controls.firstName.setValue("");
+    this.addPlayerForm.controls.lastName.setValue("");
+    this.addPlayerForm.controls.role.setValue("");
+    this.addPlayerForm.controls.selectedTeam.setValue("");
+    if (
+      this.count >= 2 &&
+      this.playersTeamA.length > this.playerCount - 1 &&
+      this.teamAAddFlag
+    ) {
+      this.addTeamDetails(this.playersTeamA, this.teamAName);
+    }
+    if (
+      this.count >= 2 &&
+      this.playersTeamB.length > this.playerCount - 1 &&
+      this.teamBAddFlag
+    ) {
+      this.addTeamDetails(this.playersTeamB, this.teamBName);
+    }
   }
 
   playerCountChecking(playerList: any): any {
-    let batsmanCount = 0,
-      bowlerCount = 0;
+    let batsmanCount = 0;
+    let bowlerCount = 0;
     playerList.forEach(player => {
       if (player.role === "Batsman") {
         batsmanCount++;
@@ -121,7 +174,7 @@ export class TeamFormationComponent implements OnInit {
       }
     });
     playerList.forEach(player => {
-      if (player.role === "Batsman" && batsmanCount === 2) {
+      if (player.role === "Batsman" && batsmanCount === this.batsmanCount) {
         if (this.selectedTeamName === "teamA") {
           this.roles = this.arrayRemove(this.teamARoles, player.role);
           this.teamARoles = this.roles;
@@ -130,7 +183,7 @@ export class TeamFormationComponent implements OnInit {
           this.teamBRoles = this.roles;
         }
       }
-      if (player.role === "Bowler" && bowlerCount === 2) {
+      if (player.role === "Bowler" && bowlerCount === this.bowlerCount) {
         if (this.selectedTeamName === "teamA") {
           this.roles = this.arrayRemove(this.teamARoles, player.role);
           this.teamARoles = this.roles;
@@ -159,23 +212,38 @@ export class TeamFormationComponent implements OnInit {
       }
     });
   }
-  arrayRemove(arr, value): any {
-    return arr.filter(function(ele) {
-      return ele != value;
+  arrayRemove(arr: any, value: string): any {
+    return arr.filter((ele: any) => {
+      return ele !== value;
     });
   }
 
-  addTeamDetails() {
+  addTeamDetails(playerList: TeamPlayerModel[], teamname: string) {
     const teamDetails = {
-      teamA: {
-        name: this.teamAName,
-        playerList: this.playersTeamA
-      },
-      teamB: {
-        name: this.teamBName,
-        playerList: this.playersTeamA
-      }
+      teamName: teamname,
+      teamSize: this.playerCount,
+      teamplayer: playerList
     };
-    this.scoreCardService.setTeamDetail(teamDetails);
+    console.log("teamDetails", teamDetails);
+    this.store.dispatch(new AddTeam(teamDetails));
+    // const teamDetailsResponse = this.store.selectSnapshot(
+    //   TeamState.getTeamList
+    // );
+    const teamDetailsResponse = this.teamformationService.fetchTeams();
+    teamDetailsResponse.subscribe(teamDetailsResp => {
+      teamDetailsResp.forEach(element => {
+        if (element.teamName === this.teamAName && this.teamAAddFlag) {
+          this.teamAAddFlag = false;
+        }
+        if (element.teamName === this.teamBName && this.teamBAddFlag) {
+          this.teamBAddFlag = false;
+        }
+      });
+    });
+  }
+  navigateToScoreboard(teamName: string) {
+    this.router.navigate(["../scoreboard", { team: teamName }], {
+      relativeTo: this.route
+    });
   }
 }

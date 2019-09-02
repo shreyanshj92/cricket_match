@@ -1,5 +1,5 @@
 {
-  "questions": [
+  "questionsTeam1": [
     {
       "id": 1,
       "question": "आप का नाम क्या है?",
@@ -65,6 +65,98 @@
       "question": "सम्यक चारित्र",
       "answer": "No ball",
       "offeredRun": 1
+    },
+    {
+      "id": 14,
+      "question": "lknl",
+      "answer": "nln",
+      "offeredRun": 2
+    },
+    {
+      "id": 16,
+      "question": "KBK",
+      "answer": " ,LNK",
+      "offeredRun": 3
+    }
+  ],
+  "questionsTeam2": [
+    {
+      "id": 1,
+      "question": "आप का नाम क्या है?",
+      "answer": "श्रेयांश जैन",
+      "offeredRun": 4
+    },
+    {
+      "id": 2,
+      "question": "आप क्या पसंद करते है?",
+      "answer": "Cricket, chess, movie",
+      "offeredRun": 2
+    },
+    {
+      "id": 3,
+      "question": "आपकी कंपनी का नाम क्या है?",
+      "answer": "Mindtree",
+      "offeredRun": 1
+    },
+    {
+      "id": 4,
+      "question": "ऑफिस जाने के लिए अपना रास्ता बताएं",
+      "answer": "phase 1",
+      "offeredRun": 6
+    },
+    {
+      "id": 5,
+      "question": "तुम्हारी उम्र क्या है",
+      "answer": "27",
+      "offeredRun": 1
+    },
+    {
+      "id": 6,
+      "question": "अपने पदनाम",
+      "answer": "Module lead",
+      "offeredRun": 3
+    },
+    {
+      "id": 7,
+      "question": "Whats your age?",
+      "answer": "27",
+      "offeredRun": 1
+    },
+    {
+      "id": 8,
+      "question": "सम्यक दर्शन",
+      "answer": "Dot ball",
+      "offeredRun": 0
+    },
+    {
+      "id": 9,
+      "question": "क्रोध",
+      "answer": "Bowled",
+      "offeredRun": 0
+    },
+    {
+      "id": 10,
+      "question": "सम्यक ज्ञान",
+      "answer": "Wide ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 11,
+      "question": "सम्यक चारित्र",
+      "answer": "No ball",
+      "offeredRun": 1
+    },
+    {
+      "id": 14,
+      "question": "lknl",
+      "answer": "nln",
+      "offeredRun": 2
+    },
+    {
+      "id": 16,
+      "question": "KBK",
+      "answer": " ,LNK",
+      "offeredRun": 3
     }
   ],
   "cricket_question": [
@@ -361,6 +453,453 @@
       "question": "सम्यक दर्शन",
       "answer": "सम्यक दर्शन",
       "offeredRun": 0
+    },
+    {
+      "id": 51,
+      "question": "गुप्तियाँ कितनी होती है?",
+      "answer": "तीन",
+      "offeredRun": 1
+    },
+    {
+      "id": 52,
+      "question": "व्यवहार नय के कितने भेद है?",
+      "answer": "दो",
+      "offeredRun": 2
+    },
+    {
+      "id": 53,
+      "question": "कितने परमेष्ठी कषाय रहित है?",
+      "answer": "दो",
+      "offeredRun": 2
+    },
+    {
+      "id": 54,
+      "question": "किसी एक बाल ब्रम्हाचारी तीर्थंकर का नाम?",
+      "answer": "वासुपूज्य / मल्लिनाथ / नेमिनाथ / पार्श्वनाथ / महावीर",
+      "offeredRun": 3
+    },
+    {
+      "id": 55,
+      "question": "उपसर्ग कितने होते है?",
+      "answer": "चार",
+      "offeredRun": 2
+    },
+    {
+      "id": 56,
+      "question": "शिक्षाव्रत कितने होते है?",
+      "answer": "चार",
+      "offeredRun": 3
+    },
+    {
+      "id": 57,
+      "question": "तप कितने प्रकार के होते है?",
+      "answer": "दो",
+      "offeredRun": 2
+    },
+    {
+      "id": 58,
+      "question": "भगवान महावीर के नाम कितने और क्या-क्या है?",
+      "answer": "वीर, अतिवीर, सन्मति, वर्धमान, महावीर",
+      "offeredRun": 2
+    },
+    {
+      "id": 59,
+      "question": "अणुव्रत कितने होते है?",
+      "answer": "पांच",
+      "offeredRun": 2
+    },
+    {
+      "id": 60,
+      "question": "1 बर्ष में दशलक्षण पर्व कितने बार आते है?",
+      "answer": "तीन",
+      "offeredRun": 1
+    },
+    {
+      "id": 61,
+      "question": "भोजन के कितने प्रकार होते है एवं उनके नाम?",
+      "answer": "चार, (खाद्य, स्वाद, पेय, लेय)",
+      "offeredRun": 4
+    },
+    {
+      "id": 62,
+      "question": "महाव्रत कितने होते है?",
+      "answer": "पांच",
+      "offeredRun": 2
+    },
+    {
+      "id": 63,
+      "question": "कितने गति के जीव पूजा करते है?",
+      "answer": "तीन",
+      "offeredRun": 2
+    },
+    {
+      "id": 64,
+      "question": "रत्नत्रय कितने होते है?",
+      "answer": "तीन",
+      "offeredRun": 2
+    },
+    {
+      "id": 65,
+      "question": "कषाय कितनी होती है?",
+      "answer": "चार",
+      "offeredRun": 2
+    },
+    {
+      "id": 66,
+      "question": "जम्मूद्वीप में सूर्य एवं चन्द्रमा कितने-कितने होते है?",
+      "answer": "दो - दो",
+      "offeredRun": 4
+    },
+    {
+      "id": 67,
+      "question": "कितने तीर्थंकर भगवान पर उपसर्ग हुआ?",
+      "answer": "तीन",
+      "offeredRun": 3
+    },
+    {
+      "id": 68,
+      "question": "आदिनाथ भगवान को प्रथम आहार किसने दिया था?",
+      "answer": "राजा श्रेयांश",
+      "offeredRun": 2
+    },
+    {
+      "id": 69,
+      "question": "गतियाँ कितनी होती है?",
+      "answer": "चार",
+      "offeredRun": 2
+    },
+    {
+      "id": 70,
+      "question": "पूजा की थाली में कितने द्रव्य होते है?",
+      "answer": "आठ",
+      "offeredRun": 2
+    },
+    {
+      "id": 71,
+      "question": "तत्व कितने होते है?",
+      "answer": "सात",
+      "offeredRun": 2
+    },
+    {
+      "id": 72,
+      "question": "अरिहंत परमेष्ठी के मूलगुण कितने होते है?",
+      "answer": "46",
+      "offeredRun": 3
+    },
+    {
+      "id": 73,
+      "question": "सिद्ध परमेष्ठी के मूलगुण कितने होते है?",
+      "answer": "आठ",
+      "offeredRun": 3
+    },
+    {
+      "id": 74,
+      "question": "आचार्य परमेष्ठी के मूलगुण कितने होते है?",
+      "answer": "36",
+      "offeredRun": 3
+    },
+    {
+      "id": 75,
+      "question": "उपाध्याय परमेष्ठी के मूलगुण कितने होते है?",
+      "answer": "25",
+      "offeredRun": 3
+    },
+    {
+      "id": 76,
+      "question": "साधु परमेष्ठी के मूलगुण कितने होते है?",
+      "answer": "28",
+      "offeredRun": 2
+    },
+    {
+      "id": 77,
+      "question": "नरक कितने है?",
+      "answer": "सात",
+      "offeredRun": 2
+    },
+    {
+      "id": 78,
+      "question": "प्रातिहार्य कितने होते है?",
+      "answer": "आठ",
+      "offeredRun": 2
+    },
+    {
+      "id": 79,
+      "question": "प्रमाद कितने होते है?",
+      "answer": "15",
+      "offeredRun": 3
+    },
+    {
+      "id": 80,
+      "question": "कारण कितने होते है?",
+      "answer": "16",
+      "offeredRun": 4
+    },
+    {
+      "id": 82,
+      "question": "णमोकार मंत्र में कितने अक्षर, मात्रायें एवं मूलवर्ण है?",
+      "answer": "35, 58, 64",
+      "offeredRun": 6
+    },
+    {
+      "id": 83,
+      "question": "विदेह क्षेत्र में कितने तीर्थंकर होते है?",
+      "answer": "20",
+      "offeredRun": 3
+    },
+    {
+      "id": 84,
+      "question": "आवश्यक कितने होते है?",
+      "answer": "6 (छह)",
+      "offeredRun": 4
+    },
+    {
+      "id": 85,
+      "question": "सम्यक दर्शन के अंग कितने होते है?",
+      "answer": "आठ",
+      "offeredRun": 6
+    },
+    {
+      "id": 86,
+      "question": "कुलकर कितने होते है?",
+      "answer": "14",
+      "offeredRun": 4
+    },
+    {
+      "id": 87,
+      "question": "शलाका पुरूष कितने होते है?",
+      "answer": "63",
+      "offeredRun": 3
+    },
+    {
+      "id": 88,
+      "question": "ऋध्दिया कितनी होती है?",
+      "answer": "64",
+      "offeredRun": 6
+    },
+    {
+      "id": 81,
+      "question": "समवशरण में कितनी सभाये होती है?",
+      "answer": "12",
+      "offeredRun": 4
     }
-  ]
+  ],
+  "teamBowlerScore": [],
+  "teamDetails": [
+    {
+      "teamName": "ABC",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "a",
+          "lastName": "a",
+          "role": "AllRounder"
+        },
+        {
+          "id": 2,
+          "firstName": "b",
+          "lastName": "b",
+          "role": "Batsman"
+        },
+        {
+          "id": 3,
+          "firstName": "c",
+          "lastName": "c",
+          "role": "Captain"
+        },
+        {
+          "id": 4,
+          "firstName": "d",
+          "lastName": "d",
+          "role": "Batsman"
+        },
+        {
+          "id": 5,
+          "firstName": "e",
+          "lastName": "e",
+          "role": "Bowler"
+        },
+        {
+          "id": 6,
+          "firstName": "f",
+          "lastName": "f",
+          "role": "Bowler"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "teamName": "ABC",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "a",
+          "lastName": "a",
+          "role": "AllRounder"
+        },
+        {
+          "id": 2,
+          "firstName": "b",
+          "lastName": "b",
+          "role": "Batsman"
+        },
+        {
+          "id": 3,
+          "firstName": "c",
+          "lastName": "c",
+          "role": "Captain"
+        },
+        {
+          "id": 4,
+          "firstName": "d",
+          "lastName": "d",
+          "role": "Batsman"
+        },
+        {
+          "id": 5,
+          "firstName": "e",
+          "lastName": "e",
+          "role": "Bowler"
+        },
+        {
+          "id": 6,
+          "firstName": "f",
+          "lastName": "f",
+          "role": "Bowler"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "teamName": "XYZ",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "u",
+          "lastName": "u",
+          "role": "Batsman"
+        },
+        {
+          "id": 2,
+          "firstName": "v",
+          "lastName": "v",
+          "role": "Batsman"
+        },
+        {
+          "id": 3,
+          "firstName": "w",
+          "lastName": "w",
+          "role": "Bowler"
+        },
+        {
+          "id": 4,
+          "firstName": "x",
+          "lastName": "x",
+          "role": "Bowler"
+        },
+        {
+          "id": 5,
+          "firstName": "y",
+          "lastName": "y",
+          "role": "AllRounder"
+        },
+        {
+          "id": 6,
+          "firstName": "z",
+          "lastName": "z",
+          "role": "Captain"
+        }
+      ],
+      "id": 3
+    }
+  ],
+  "teamBatsmanScore": [
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "a",
+        "run": 2,
+        "ball": 2,
+        "four": 0,
+        "six": 0,
+        "strikeRate": "100"
+      },
+      "id": 1
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "b",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 2
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "c",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 3
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "d",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 4
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "e",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 5
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "f",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 6
+    },
+    {
+      "teamName": "ABC",
+      "playerScore": {
+        "name": "f",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 7
+    }
+  ],
+  "teamScore": []
 }

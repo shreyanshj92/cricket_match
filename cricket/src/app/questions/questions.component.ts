@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ScoreCardService } from "../services/score-card.service";
+import Swal from "sweetalert2";
+import { QuestionUpdateService } from "../services/question-update/question-update.service";
 
 @Component({
   selector: "app-questions",
@@ -7,7 +9,6 @@ import { ScoreCardService } from "../services/score-card.service";
   styleUrls: ["./questions.component.scss"]
 })
 export class QuestionsComponent implements OnInit {
-  // nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   questionDeepCopy = [];
   questions = [];
 
@@ -15,12 +16,17 @@ export class QuestionsComponent implements OnInit {
   error: string;
   displayAnswer = false;
   startImageHide = true;
-  constructor(private scoreCardService: ScoreCardService) {}
+  constructor(
+    private questionUpdateService: QuestionUpdateService,
+    private scoreCardService: ScoreCardService
+  ) {}
 
   ngOnInit() {
-    this.scoreCardService.fetchQuestions().subscribe((questionList: any) => {
-      this.questions = questionList;
-    });
+    this.questionUpdateService
+      .fetchQuestions()
+      .subscribe((questionList: any) => {
+        this.questions = questionList;
+      });
     this.questionDeepCopy = JSON.parse(JSON.stringify(this.questions));
   }
   nextQuestion(questionObj: any): void {
@@ -49,9 +55,16 @@ export class QuestionsComponent implements OnInit {
   catchOut() {
     const questionObj = {
       question: "bowled",
-      answer: "Out",
+      answer: "bowled",
       offeredRun: 0
     };
+    Swal.fire({
+      type: "error",
+      title: "Oops... Out",
+      imageUrl: "../../assets/images/out.jpg",
+      showConfirmButton: false,
+      timer: 1500
+    });
     this.nextQuestion(questionObj);
   }
 }

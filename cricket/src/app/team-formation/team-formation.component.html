@@ -14,25 +14,61 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <div class="input-group mb-3" *ngIf="count < 2">
-          <input
-            type="text"
-            class="form-control"
-            [formControl]="teamName"
-            placeholder="Enter your team name"
-            required
-          />
-          <div class="input-group-append">
-            <button
-              class="btn btn-success"
-              type="submit"
-              (click)="addTeamName(teamName.value)"
-            >
-              Add team name
-            </button>
-          </div>
+      <div class="col-md-6" *ngIf="!isDisplayPlayerDropdown">
+        <label class="label"
+          >Team size<span style="font-size: 10px;">
+            (select per team player count)</span
+          ></label
+        >
+        <div>
+          <select
+            class="custom-select"
+            id="team"
+            (change)="updatePlayerCount($event)"
+          >
+            <option value="" selected>Select team size</option>
+            <option value="6">6 (Six)</option>
+            <option value="11">11 (Eleven)</option>
+          </select>
         </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6" *ngIf="isDisplayPlayerDropdown">
+        <form
+          [formGroup]="addTeamNameForm"
+          *ngIf="count < 2"
+          (ngSubmit)="onSubmit()"
+        >
+          <label class="label">Team Name</label>
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="Enter your team name"
+              formControlName="teamName"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid': addTeamNameForm.controls['teamName'].invalid
+              }"
+            />
+          </div>
+          <div class="form-group">
+            <div class="col text-center">
+              <button
+                class="btn btn-success"
+                [disabled]="!addTeamNameForm.valid"
+                type="submit"
+              >
+                Add team name
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
       <div class="col-md-3"></div>
     </div>
@@ -40,14 +76,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-1"></div>
-      <div class="col-md-10">
-        <div
-          class="input-group mt-3 mb-3"
-          [formGroup]="addPlayerForm"
-          *ngIf="
-            count >= 2 && (playersTeamA.length < 6 || playersTeamB.length < 6)
-          "
-        >
+      <div
+        class="col-md-10"
+        *ngIf="
+          count >= 2 &&
+          (playersTeamA.length < playerCount ||
+            playersTeamB.length < playerCount)
+        "
+      >
+        <label class="label">Player details</label>
+        <div class="input-group mt-3 mb-3" [formGroup]="addPlayerForm">
           <div class="input-group-prepend">
             <select
               class="custom-select"
@@ -56,10 +94,10 @@
               (change)="updateTeamName($event)"
             >
               <option value="" selected>Select team</option>
-              <option value="teamA" *ngIf="playersTeamA.length < 6">{{
+              <option value="teamA" *ngIf="playersTeamA.length < playerCount">{{
                 teamAName
               }}</option>
-              <option value="teamB" *ngIf="playersTeamB.length < 6">{{
+              <option value="teamB" *ngIf="playersTeamB.length < playerCount">{{
                 teamBName
               }}</option>
             </select>
@@ -92,13 +130,6 @@
               (click)="addPlayer()"
             >
               Add player
-            </button>
-            <button
-              class="btn btn-danger"
-              type="button"
-              (click)="cancelPlayer()"
-            >
-              Cancel
             </button>
           </div>
         </div>
@@ -171,15 +202,36 @@
       </div>
     </div>
   </div>
-
-  <div
-    *ngIf="count >= 2 && playersTeamA.length >= 6 && playersTeamB.length >= 6"
-  >
-    <a
-      class="btn btn-success"
-      [routerLink]="['../scoreboard']"
-      (click)="addTeamDetails()"
-      >Toss</a
-    >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <div
+          *ngIf="
+            count >= 2 &&
+            playersTeamA.length >= playerCount &&
+            playersTeamB.length >= playerCount
+          "
+        >
+          <a
+            class="btn btn-success mr-3"
+            (click)="navigateToScoreboard(teamAName)"
+            >Team {{ teamAName }} won toss</a
+          >
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div
+          *ngIf="
+            count >= 2 &&
+            playersTeamA.length >= playerCount &&
+            playersTeamB.length >= playerCount
+          "
+        >
+          <a class="btn btn-success" (click)="navigateToScoreboard(teamBName)"
+            >Team {{ teamBName }} won toss</a
+          >
+        </div>
+      </div>
+    </div>
   </div>
 </div>

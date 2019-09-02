@@ -1,0 +1,37 @@
+<div class="container">
+  <h2 class="col text-center mt-3 mb-3 font-effect-shadow-multiple">
+    Scorecard
+  </h2>
+  <div>
+    <table>
+      <thead>
+        <tr *ngFor="let team of teams">
+          <th>
+            {{ team }}
+          </th>
+
+          <table class="table table-bordered">
+            <thead>
+              <th scope="col">Player</th>
+              <th scope="col">Run</th>
+              <th scope="col">Ball</th>
+              <th scope="col">Six run</th>
+              <th scope="col">Four</th>
+              <th scope="col">SR</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let player of data">
+                <td>{{ player.playerScore.name }}</td>
+                <td>{{ player.playerScore.run }}</td>
+                <td>{{ player.playerScore.ball }}</td>
+                <td>{{ player.playerScore.six }}</td>
+                <td>{{ player.playerScore.four }}</td>
+                <td>{{ player.playerScore.strikeRate }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

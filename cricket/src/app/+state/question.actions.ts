@@ -1,4 +1,4 @@
-import { QuestionModel } from "./../services/models/question.model";
+import { QuestionModel } from "../services/models/question.model";
 export class AddQuestion {
   static readonly type = "[USER] Add";
 
