@@ -45,10 +45,14 @@ export class TeamFormationComponent implements OnInit {
   teamBAddFlag = true;
   submitted: boolean;
   isDisplayPlayerDropdown: boolean;
-
+  teamDetails: any;
   count = 0;
+  teams = [];
   teamAPlayerCount = 1;
   teamBPlayerCount = 1;
+  PlayerDetails = [];
+  teamChangeFlag = true;
+
   constructor(
     private fb: FormBuilder,
     private scoreCardService: ScoreCardService,
@@ -59,6 +63,25 @@ export class TeamFormationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.teamDetails = this.store.selectSnapshot(TeamState.getTeamList);
+    if (this.teamDetails.length > 0) {
+      this.teamChangeFlag = false;
+      this.teamDetails.forEach(element => {
+        this.teams.push(element.teamName);
+        this.PlayerDetails.push(element.teamplayer);
+      });
+
+      this.teams = [...new Set(this.teams)];
+      this.teamAName = this.teams[0];
+      this.teamBName = this.teams[1];
+      this.playersTeamA = this.PlayerDetails[0];
+      this.playersTeamB = this.PlayerDetails[1];
+      if (
+        JSON.stringify(this.playersTeamA) === JSON.stringify(this.playersTeamB)
+      ) {
+        this.playersTeamB = this.PlayerDetails[2];
+      }
+    }
     this.addTeamNameForm = this.fb.group({
       teamName: this.fb.control("", [Validators.required])
     });
@@ -224,7 +247,6 @@ export class TeamFormationComponent implements OnInit {
       teamSize: this.playerCount,
       teamplayer: playerList
     };
-    console.log("teamDetails", teamDetails);
     this.store.dispatch(new AddTeam(teamDetails));
     // const teamDetailsResponse = this.store.selectSnapshot(
     //   TeamState.getTeamList

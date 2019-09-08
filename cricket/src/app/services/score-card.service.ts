@@ -1,3 +1,4 @@
+import { ActivatedRoute } from "@angular/router";
 import { TeamScoreModel } from "src/app/services/models/teamScore.model";
 import { AddTeamScore } from "./../+state/teamformation/teamformation.actions";
 import { TeamformationService } from "./teamformation/teamformation.service";
@@ -15,12 +16,14 @@ import {
 import { Store } from "@ngxs/store";
 import { TeamState } from "../+state/teamformation/teamformation.state";
 import { QuestionUpdateService } from "./question-update/question-update.service";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class ScoreCardService {
   scoreCardObj = {
+    showScoreTeamName: "",
     totalRun: 0,
     totalBall: 0,
     totalWicket: 0,
@@ -36,6 +39,7 @@ export class ScoreCardService {
   tossWinnerTeam: any;
   ballPerOver: number;
   overNumber = 6;
+  teamAFinalScore: any;
 
   teamBatsmanScore = {
     teamName: "",
@@ -66,7 +70,9 @@ export class ScoreCardService {
     private http: HttpClient,
     private store: Store,
     private questionUpdateService: QuestionUpdateService,
-    private teamformationService: TeamformationService
+    private teamformationService: TeamformationService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
   fetchScorecard() {
     return this.http.get<TeamPlayerScoreBatsmanModel[]>(
@@ -86,9 +92,6 @@ export class ScoreCardService {
     );
   }
 
-  getScore(): any {
-    return this.scoreCardObj;
-  }
   getPlayerScore() {
     return this.teamBatsmanScore;
   }
@@ -151,21 +154,35 @@ export class ScoreCardService {
     }
     this.updateBatsmanScore();
 
-    if (this.scoreCardObj.totalWicket <= this.teamSize - 1) {
+    if (this.scoreCardObj.totalWicket > this.teamSize - 1) {
       this.updateInnings();
     }
     // this.ballCount();
   }
 
   updateInnings() {
-    this.scoreCardObj = {
-      totalRun: 0,
-      totalBall: 0,
-      totalWicket: 0,
-      extraRun: 0,
-      totalFours: 0,
-      totalSixes: 0
-    };
+    let overCount: any;
+    if (this.scoreCardObj.totalBall === 36) {
+      overCount = 6;
+    }
+    if (
+      this.scoreCardObj.totalWicket === 6 ||
+      Math.floor(this.scoreCardObj.totalBall / 6) === 6
+    ) {
+      this.teamAFinalScore = `${this.scoreCardObj.showScoreTeamName}: ${this.scoreCardObj.totalRun}/${this.scoreCardObj.totalWicket}  Overs: ${overCount}`;
+    }
+    this.router.navigate(["../teamformation"], {
+      relativeTo: this.route
+    });
+
+    this.scoreCardObj.showScoreTeamName = this.tossLosserTeam;
+    this.scoreCardObj.totalRun = 0;
+    this.scoreCardObj.totalBall = 0;
+    this.scoreCardObj.totalWicket = 0;
+    this.scoreCardObj.extraRun = 0;
+    this.scoreCardObj.totalFours = 0;
+    this.scoreCardObj.totalSixes = 0;
+
     this.teamBatsmanScore = {
       teamName: "",
       playerScore: {
@@ -177,18 +194,13 @@ export class ScoreCardService {
         strikeRate: ""
       }
     };
-    this.teamScore.teamName = this.teamWonToss;
-    this.teamScore.run = this.scoreCardObj.totalRun;
-    this.teamScore.wicket = this.scoreCardObj.totalWicket;
-    this.teamScore.over = this.calOverCount();
-    this.store.dispatch(new AddTeamScore(this.teamScore));
-    this.questionUpdateService.setDatabaseName("teamB");
+    // this.questionUpdateService.setDatabaseName("teamB");
   }
 
   updateBatsmanScore() {
     this.teamDetails.forEach(team => {
       this.teamSize = team.teamSize;
-      this.teams.push(team.teamName);
+
       if (
         team.teamName === this.teamWonToss &&
         this.scoreCardObj.totalWicket < this.teamSize &&
@@ -199,7 +211,7 @@ export class ScoreCardService {
           team.teamplayer[this.scoreCardObj.totalWicket].firstName);
       }
       if (
-        team.teamName === this.teamWonToss &&
+        team.teamName === this.tossLosserTeam &&
         this.scoreCardObj.totalWicket < this.teamSize &&
         this.innigsChangeFlag
       ) {
@@ -208,8 +220,6 @@ export class ScoreCardService {
           team.teamplayer[this.scoreCardObj.totalWicket].firstName);
       }
     });
-    this.teams = [...new Set(this.teams)];
-    console.log("this.tossLosserTeam", this.tossLosserTeam, this.teams);
   }
 
   calOverCount(): string {
@@ -223,7 +233,7 @@ export class ScoreCardService {
       } else {
         this.updateInnings();
         this.innigsChangeFlag = true;
-        return "Inning end";
+        return;
       }
     } else {
       return "0.0";
@@ -284,8 +294,28 @@ export class ScoreCardService {
   }
 
   addTeamDetails(teamName: string) {
+    this.tossWinnerTeam = teamName;
     this.teamDetails = this.store.selectSnapshot(TeamState.getTeamList);
-    this.teamWonToss = teamName;
-    this.questionUpdateService.setDatabaseName("teamA");
+    this.teamDetails.forEach(element => {
+      this.teams.push(element.teamName);
+    });
+
+    this.teams = [...new Set(this.teams)];
+    this.teams.forEach(team => {
+      if (this.tossWinnerTeam === team) {
+        this.teamWonToss = team;
+      } else {
+        this.tossLosserTeam = team;
+      }
+    });
+    this.scoreCardObj.showScoreTeamName = this.teamWonToss;
+    // this.questionUpdateService.setDatabaseName("teamA");
+  }
+
+  getScore(): any {
+    return this.scoreCardObj;
+  }
+  getFirstIningsScore(): string {
+    return this.teamAFinalScore;
   }
 }

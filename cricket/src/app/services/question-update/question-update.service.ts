@@ -7,21 +7,21 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class QuestionUpdateService {
-  questionTeam1 = AppSettings.QUESTIONTEAM1;
-  questionTeam2 = AppSettings.QUESTIONTEAM2;
-  questionResponse = AppSettings.QUESTIONSRESPONSE;
+  // questionTeam1 = AppSettings.QUESTIONTEAM1;
+  // questionTeam2 = AppSettings.QUESTIONTEAM2;
+  questionTeam = AppSettings.QUESTIONSRESPONSE;
   questionTableData = AppSettings.QUESTIONSRESPONSE;
-  questionTeam = this.questionResponse;
+  // questionTeam = this.questionResponse;
 
   constructor(private http: HttpClient) {}
 
-  setDatabaseName(teamName: string) {
-    if (teamName === "teamA") {
-      this.questionTeam = this.questionTeam1;
-    } else {
-      this.questionTeam = this.questionTeam2;
-    }
-  }
+  // setDatabaseName(teamName: string) {
+  //   if (teamName === "teamA") {
+  //     this.questionTeam = this.questionTeam1;
+  //   } else {
+  //     this.questionTeam = this.questionTeam2;
+  //   }
+  // }
 
   fetchQuestions() {
     return this.http.get<QuestionModel[]>(

@@ -65,6 +65,10 @@ export class ScoreboardComponent implements OnInit {
     );
   }
 
+  getFirstIningsFinalScore() {
+    this.scoreCardService.getFirstIningsScore();
+  }
+
   calRunRate(): string {
     return ((this.scoreCard.totalRun * 6) / this.scoreCard.totalBall).toFixed(
       1
@@ -76,7 +80,7 @@ export class ScoreboardComponent implements OnInit {
     if (overCount.toLowerCase() !== "inning end") {
       return overCount;
     } else {
-      this.firstInnigscore(overCount);
+      // this.firstInnigscore(overCount);
       return;
     }
   }

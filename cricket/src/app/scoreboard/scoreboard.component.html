@@ -13,7 +13,7 @@
 
     <h3 style="display: inline;">
       <span class="badge badge-secondary"
-        >{{ teamWonToss }} :
+        >{{ scoreCard.showScoreTeamName }} :
         <span *ngIf="scoreCard.totalWicket < teamSize"
           >{{ scoreCard.totalRun }}/{{ scoreCard.totalWicket }}</span
         >
@@ -34,19 +34,14 @@
       />
       <span>{{ getPlayerScore() }}</span>
     </span>
-    <span style="margin-left: 20px; color: blue">
-      <img
-        src="../../assets/images/ball.jpg"
-        alt="bat-logo"
-        height="30"
-        width="30"
-      />{{ displayBowler }} : {{ displayBowler }} <span></span>
-    </span>
+
     <span class="vl"></span>
+    <span style=" margin-top: 7px">{{ getFirstIningsFinalScore() }}</span>
     <span style="margin-left: 450px; margin-top: 7px" *ngIf="scoreCard.extraRun"
       >Extra runs: {{ scoreCard.extraRun }}</span
     >
     <span style="margin-left: 20px;">Run rate: {{ calRunRate() }}</span>
+
     <button
       type="button"
       class="btn btn-primary"

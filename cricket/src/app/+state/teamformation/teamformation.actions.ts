@@ -4,9 +4,9 @@ export class AddTeam {
   static readonly type = "[TEAM] Add";
 
   constructor(
-    public payload: TeamFormationModel,
-    public teamScore: TeamScoreModel
-  ) {}
+    public payload: TeamFormationModel
+  ) // public teamScore: TeamScoreModel
+  {}
 }
 
 export class AddTeamScore {
