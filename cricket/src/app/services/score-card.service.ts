@@ -203,22 +203,20 @@ export class ScoreCardService {
 
       if (
         team.teamName === this.teamWonToss &&
-        this.scoreCardObj.totalWicket < this.teamSize &&
-        !this.innigsChangeFlag
+        this.scoreCardObj.totalWicket < this.teamSize
       ) {
         this.teamBatsmanScore.teamName = team.teamName;
         return (this.teamBatsmanScore.playerScore.name =
           team.teamplayer[this.scoreCardObj.totalWicket].firstName);
       }
-      if (
-        team.teamName === this.tossLosserTeam &&
-        this.scoreCardObj.totalWicket < this.teamSize &&
-        this.innigsChangeFlag
-      ) {
-        this.teamBatsmanScore.teamName = team.teamName;
-        return (this.teamBatsmanScore.playerScore.name =
-          team.teamplayer[this.scoreCardObj.totalWicket].firstName);
-      }
+      // if (
+      //   team.teamName === this.tossLosserTeam &&
+      //   this.scoreCardObj.totalWicket < this.teamSize
+      // ) {
+      //   this.teamBatsmanScore.teamName = team.teamName;
+      //   return (this.teamBatsmanScore.playerScore.name =
+      //     team.teamplayer[this.scoreCardObj.totalWicket].firstName);
+      // }
     });
   }
 

@@ -76,8 +76,8 @@ export class ScoreboardComponent implements OnInit {
   }
 
   calOverCount(): string {
-    const overCount = this.scoreCardService.calOverCount();
-    if (overCount.toLowerCase() !== "inning end") {
+    const overCount = this.scoreCardService.calOverCount().toLowerCase();
+    if (overCount !== "inning end") {
       return overCount;
     } else {
       // this.firstInnigscore(overCount);

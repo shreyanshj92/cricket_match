@@ -229,7 +229,7 @@
     {
       "id": 13,
       "question": "भक्तामर के रचियता कौन हैं?",
-      "answer": "आ. कुंद कुंद स्वामी",
+      "answer": "आ. मांगतुंग स्वामी",
       "offeredRun": 1
     },
     {
@@ -275,12 +275,6 @@
       "offeredRun": 1
     },
     {
-      "id": 21,
-      "question": "द्रव्यों के समूह को क्या है?",
-      "answer": "विश्व",
-      "offeredRun": 1
-    },
-    {
       "id": 22,
       "question": "आदिपुराण के रचियता कौन है?",
       "answer": "जिनसेन",
@@ -318,7 +312,7 @@
     },
     {
       "id": 28,
-      "question": "भगवान पार्श्वनाथ पर उपसार किसने किया था?",
+      "question": "भगवान पार्श्वनाथ पर उपसर्ग किसने किया था?",
       "answer": "कमठ",
       "offeredRun": 1
     },
@@ -470,7 +464,7 @@
       "id": 53,
       "question": "कितने परमेष्ठी कषाय रहित है?",
       "answer": "दो",
-      "offeredRun": 2
+      "offeredRun": 4
     },
     {
       "id": 54,
@@ -499,14 +493,14 @@
     {
       "id": 58,
       "question": "भगवान महावीर के नाम कितने और क्या-क्या है?",
-      "answer": "वीर, अतिवीर, सन्मति, वर्धमान, महावीर",
-      "offeredRun": 2
+      "answer": "5, वीर, अतिवीर, सन्मति, वर्धमान, महावीर",
+      "offeredRun": 6
     },
     {
       "id": 59,
       "question": "अणुव्रत कितने होते है?",
       "answer": "पांच",
-      "offeredRun": 2
+      "offeredRun": 4
     },
     {
       "id": 60,
@@ -516,15 +510,15 @@
     },
     {
       "id": 61,
-      "question": "भोजन के कितने प्रकार होते है एवं उनके नाम?",
-      "answer": "चार, (खाद्य, स्वाद, पेय, लेय)",
-      "offeredRun": 4
+      "question": "नेमिनाथ भगवान् कहाँ से मोक्ष गये थे ?",
+      "answer": "गिरनार जी ",
+      "offeredRun": 2
     },
     {
       "id": 62,
       "question": "महाव्रत कितने होते है?",
       "answer": "पांच",
-      "offeredRun": 2
+      "offeredRun": 4
     },
     {
       "id": 63,
@@ -636,9 +630,9 @@
     },
     {
       "id": 82,
-      "question": "णमोकार मंत्र में कितने अक्षर, मात्रायें एवं मूलवर्ण है?",
-      "answer": "35, 58, 64",
-      "offeredRun": 6
+      "question": "णमोकार मंत्र में कितने अक्षर, मात्रायें है?",
+      "answer": "35, 58",
+      "offeredRun": 2
     },
     {
       "id": 83,
@@ -681,10 +675,290 @@
       "question": "समवशरण में कितनी सभाये होती है?",
       "answer": "12",
       "offeredRun": 4
+    },
+    {
+      "id": 21,
+      "question": "वासुपूज्य भगवान् कहाँ से मोक्ष गये थे ?",
+      "answer": "चम्पापुर",
+      "offeredRun": 4
+    },
+    {
+      "id": 90,
+      "question": "पारसनाथ भगवान् कहाँ से मोक्ष गये थे ?",
+      "answer": "सम्मेद शिखर जी ",
+      "offeredRun": 2
+    },
+    {
+      "id": 91,
+      "question": "सम्मेद शिखर जी से कितने तीर्थंकर मोक्ष गये?",
+      "answer": "बीस ",
+      "offeredRun": 6
+    },
+    {
+      "id": 92,
+      "question": "आदिनाथ भगवान् कहाँ से मोक्ष गये थे ?",
+      "answer": "कैलाश पर्वत",
+      "offeredRun": 3
+    },
+    {
+      "id": 93,
+      "question": "आदिनाथ भगवान् का चिन्ह क्या है?",
+      "answer": "बैल ",
+      "offeredRun": 1
+    },
+    {
+      "id": 94,
+      "question": "महावीर भगवान् का चिन्ह क्या है?",
+      "answer": "सिंह",
+      "offeredRun": 1
+    },
+    {
+      "id": 95,
+      "question": "शांतिनाथ भगवान् का चिन्ह क्या है?",
+      "answer": "हिरन",
+      "offeredRun": 1
+    },
+    {
+      "id": 96,
+      "question": "पारसनाथ भगवान् का चिन्ह क्या है?",
+      "answer": "सर्प",
+      "offeredRun": 1
     }
   ],
   "teamBowlerScore": [],
-  "teamDetails": [],
-  "teamBatsmanScore": [],
+  "teamDetails": [
+    {
+      "teamName": "ARIHANT",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "ABHISHEK ",
+          "lastName": "JAIN",
+          "role": "Captain"
+        },
+        {
+          "id": 2,
+          "firstName": "MANOJ",
+          "lastName": "JAIN",
+          "role": "Batsman"
+        },
+        {
+          "id": 3,
+          "firstName": "SHARAD",
+          "lastName": "JAIN",
+          "role": "Bowler"
+        },
+        {
+          "id": 4,
+          "firstName": "PRIYANKA ",
+          "lastName": "JAIN",
+          "role": "AllRounder"
+        },
+        {
+          "id": 5,
+          "firstName": "PIHU",
+          "lastName": "JAIN",
+          "role": "Batsman"
+        },
+        {
+          "id": 6,
+          "firstName": "ISHIT",
+          "lastName": "JAIN",
+          "role": "Bowler"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "teamName": "AKINCHAN",
+      "teamSize": 6,
+      "teamplayer": [
+        {
+          "id": 1,
+          "firstName": "MAYANK",
+          "lastName": "JAIN",
+          "role": "Batsman"
+        },
+        {
+          "id": 2,
+          "firstName": "PARUL",
+          "lastName": "JAIN",
+          "role": "Captain"
+        },
+        {
+          "id": 3,
+          "firstName": "ANAMIKA",
+          "lastName": "JAIN",
+          "role": "AllRounder"
+        },
+        {
+          "id": 4,
+          "firstName": "ARNAV",
+          "lastName": "JAIN",
+          "role": "Batsman"
+        },
+        {
+          "id": 5,
+          "firstName": "ANUJ",
+          "lastName": "JAIN",
+          "role": "Bowler"
+        },
+        {
+          "id": 6,
+          "firstName": "AAHANA",
+          "lastName": "JAIN",
+          "role": "Bowler"
+        }
+      ],
+      "id": 2
+    }
+  ],
+  "teamBatsmanScore": [
+    {
+      "teamName": "ARIHANT",
+      "playerScore": {
+        "name": "ABHISHEK ",
+        "run": 29,
+        "ball": 15,
+        "four": 2,
+        "six": 0,
+        "strikeRate": "193"
+      },
+      "id": 1
+    },
+    {
+      "teamName": "ARIHANT",
+      "playerScore": {
+        "name": "MANOJ",
+        "run": 1,
+        "ball": 3,
+        "four": 0,
+        "six": 0,
+        "strikeRate": "33"
+      },
+      "id": 2
+    },
+    {
+      "teamName": "ARIHANT",
+      "playerScore": {
+        "name": "SHARAD",
+        "run": 8,
+        "ball": 5,
+        "four": 1,
+        "six": 0,
+        "strikeRate": "160"
+      },
+      "id": 3
+    },
+    {
+      "teamName": "ARIHANT",
+      "playerScore": {
+        "name": "PRIYANKA ",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 4
+    },
+    {
+      "teamName": "ARIHANT",
+      "playerScore": {
+        "name": "PIHU",
+        "run": 7,
+        "ball": 3,
+        "four": 0,
+        "six": 1,
+        "strikeRate": "233"
+      },
+      "id": 5
+    },
+    {
+      "teamName": "ARIHANT",
+      "playerScore": {
+        "name": "ISHIT",
+        "run": 2,
+        "ball": 2,
+        "four": 0,
+        "six": 0,
+        "strikeRate": "100"
+      },
+      "id": 6
+    },
+    {
+      "teamName": "AKINCHAN",
+      "playerScore": {
+        "name": "MAYANK",
+        "run": 2,
+        "ball": 2,
+        "four": 0,
+        "six": 0,
+        "strikeRate": "100"
+      },
+      "id": 7
+    },
+    {
+      "teamName": "AKINCHAN",
+      "playerScore": {
+        "name": "PARUL",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 8
+    },
+    {
+      "teamName": "AKINCHAN",
+      "playerScore": {
+        "name": "ANAMIKA",
+        "run": 0,
+        "ball": 1,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 9
+    },
+    {
+      "teamName": "AKINCHAN",
+      "playerScore": {
+        "name": "ARNAV",
+        "run": 0,
+        "ball": 2,
+        "four": 0,
+        "six": 0,
+        "strikeRate": ""
+      },
+      "id": 10
+    },
+    {
+      "teamName": "AKINCHAN",
+      "playerScore": {
+        "name": "ANUJ",
+        "run": 6,
+        "ball": 2,
+        "four": 0,
+        "six": 1,
+        "strikeRate": "300"
+      },
+      "id": 11
+    },
+    {
+      "teamName": "AKINCHAN",
+      "playerScore": {
+        "name": "AAHANA",
+        "run": 2,
+        "ball": 2,
+        "four": 0,
+        "six": 0,
+        "strikeRate": "100"
+      },
+      "id": 12
+    }
+  ],
   "teamScore": []
 }

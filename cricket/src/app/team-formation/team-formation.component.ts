@@ -75,10 +75,10 @@ export class TeamFormationComponent implements OnInit {
       this.teamAName = this.teams[0];
       this.teamBName = this.teams[1];
       this.playersTeamA = this.PlayerDetails[0];
-      this.playersTeamB = this.PlayerDetails[1];
-      if (
-        JSON.stringify(this.playersTeamA) === JSON.stringify(this.playersTeamB)
-      ) {
+
+      if (this.PlayerDetails.length === 2) {
+        this.playersTeamB = this.PlayerDetails[1];
+      } else {
         this.playersTeamB = this.PlayerDetails[2];
       }
     }
